@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Psicoterapia — Juliana Munhoz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /*
+         * PALETA — alinhada à logo e ao portfólio
+         * ─────────────────────────────────────────────────
+         * Logo:      Espiral azul-ardósia + folha pêssego + folha sálvia + texto marrom
+         * Portfólio: Fundo creme #F5F0E8, títulos bordô #5C2D1E
+         *
+         * Identidade por serviço (cada página "veste" uma cor da espiral):
+         *   Psicoterapia → Sálvia   (científico / TCC + Neuropsicologia / crescimento)
+         *   Mentoria     → Pêssego  (ação / movimento de carreira)
+         *   Consultoria  → Ardósia  (estrutural / corporativo)
+         *
+         * O pêssego permanece fixo como cor de CONVERSÃO (CTA) em todas as páginas,
+         * para que o botão de clique seja sempre reconhecível, independente da
+         * cor de identidade de cada serviço.
+         */
+        :root {
+            --bg-hero: #F5F0E8;
+            --bg-dores: #F0EBE2;
+            --bg-para-quem: #E8E2D8;
+            --bg-entregaveis: #E4DED4;
+            --bg-dark: #3B2820;
+
+            /* — Bordô (títulos) — */
+            --bordeaux: #5C2D1E;
+            --bordeaux-pale: #F5E8E2;
+            --bordeaux-mid: #D4A090;
+
+            /* — Pêssego (ação/CTA — fixo em todas as páginas) — */
+            --peach: #C4745A;
+            --peach-pale: #F5E8E2;
+            --peach-mid: #E8A98C;
+            --peach-light: #FAEAE3;
+
+            /* — Ardósia (estrutural) — */
+            --slate: #6B8BA4;
+            --slate-pale: #E8EFF4;
+            --slate-mid: #B8CEDC;
+            --slate-dark: #4A6478;
+
+            /* — Sálvia (crescimento/transformação) — cor de identidade desta página — */
+            --sage: #7A9E84;
+            --sage-pale: #E5EFE7;
+            --sage-mid: #B2CCBA;
+            --sage-dark: #567A60;
+
+            /* — Neutro (marrom claro) — usado nos elementos padrão do site:
+               labels de seção (exceto o eyebrow do hero), números e ícones
+               das seções "Dores" e "Para quem". É um marrom mais claro, da
+               mesma família do bordô dos títulos e do marrom das seções
+               escuras — não é uma das 3 cores da logo. */
+            --neutral: #A89A8C;
+            --neutral-pale: #EFE9E1;
+            --neutral-mid: #D9C9B8;
+            --neutral-dark: #8B7363;
+
+            /* Versão clara do marrom, para uso sobre fundo escuro (ex: "A
+               virada começa aqui"), no lugar do azul-ardósia. */
+            --neutral-on-dark: #D8C4AE;
+            --neutral-on-dark-mid: #C9B49C;
+
+            --text-primary: #5C2D1E;
+            --text-body: #4A3A30;
+            --text-muted: #A08070;
+
+            --border: rgba(107, 139, 164, 0.12);
+            --border-md: rgba(107, 139, 164, 0.22);
+            --section-divider: rgba(107, 139, 164, 0.10);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-hero);
+            color: var(--text-body);
+            font-size: 16px;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── TIPOGRAFIA ── */
+        .display {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(2.6rem, 6vw, 4.2rem);
+            line-height: 1.1;
+            color: var(--bordeaux);
+            letter-spacing: -0.01em;
+        }
+
+        /* Destaque do hero = cor de identidade da página (sálvia, científico) */
+        .display em {
+            font-style: italic;
+            color: var(--sage);
+        }
+
+        .section-label {
+            font-size: 11.5px;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--neutral-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 1.1rem;
+        }
+
+        .section-label::before {
+            content: '';
+            display: block;
+            width: 24px;
+            height: 1px;
+            background: var(--neutral-mid);
+        }
+
+        /* Eyebrow do hero = cor de identidade da página (sálvia, científico).
+           Os demais section-labels (Dores, Para quem, Entregáveis) permanecem
+           em ardósia, como padrão estrutural do site. */
+        #hero .section-label {
+            color: var(--sage);
+        }
+
+        #hero .section-label::before {
+            background: var(--sage-mid);
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            font-size: clamp(2rem, 3.8vw, 2.7rem);
+            color: var(--bordeaux);
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        /* ── LAYOUT ── */
+        .container {
+            max-width: 1480px;
+            margin: 0 auto;
+            padding: 0 72px;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--bg-hero);
+            border-bottom: 1px solid var(--section-divider);
+        }
+
+        .nav-inner {
+            max-width: 1480px;
+            margin: 0 auto;
+            padding: 0 72px;
+            height: 104px;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+        }
+
+        .nav-logo {
+            grid-column: 1;
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .nav-logo img {
+            height: 70px;
+            width: auto;
+            display: block;
+        }
+
+        .nav-links {
+            grid-column: 2;
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            display: inline-flex;
+            align-items: center;
+            font-size: 13.5px;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--peach);
+        }
+
+        .nav-links a.active {
+            color: var(--peach);
+        }
+
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .nav-dropdown>a {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .nav-dropdown>a::after {
+            content: '';
+            width: 5px;
+            height: 5px;
+            border-right: 1.5px solid currentColor;
+            border-bottom: 1.5px solid currentColor;
+            transform: rotate(45deg) translateY(-2px);
+            transition: transform 0.2s;
+        }
+
+        .nav-dropdown.open>a::after {
+            transform: rotate(-135deg) translateY(-2px);
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 14px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--bg-hero);
+            border: 1px solid var(--border-md);
+            min-width: 170px;
+            flex-direction: column;
+        }
+
+        .nav-dropdown.open .dropdown-menu {
+            display: flex;
+        }
+
+        .dropdown-menu a {
+            padding: 11px 20px;
+            font-size: 11.5px;
+            font-weight: 500;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            text-decoration: none;
+            border-bottom: 1px solid var(--border);
+            transition: background 0.15s, color 0.15s;
+            white-space: nowrap;
+        }
+
+        .dropdown-menu a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-menu a:hover {
+            background: var(--peach-pale);
+            color: var(--peach);
+        }
+
+        .dropdown-menu a.active {
+            color: var(--peach);
+        }
+
+        .nav-cta {
+            grid-column: 3;
+            justify-self: end;
+            display: inline-flex;
+            align-items: center;
+            padding: 11px 26px;
+            border: 1px solid var(--border-md);
+            font-size: 12.5px;
+            font-weight: 500;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            color: var(--bordeaux);
+            text-decoration: none;
+            transition: background 0.2s, border-color 0.2s;
+        }
+
+        .nav-cta:hover {
+            background: var(--peach-pale);
+            border-color: var(--peach-mid);
+        }
+
+        .nav-toggle {
+            display: none;
+        }
+
+        /* ── HERO ── */
+        #hero {
+            background: var(--bg-hero);
+            padding: 56px 0 64px;
+        }
+
+        .hero-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 88px;
+            align-items: center;
+        }
+
+        .hero-subtitle {
+            font-size: 16.5px;
+            color: var(--text-muted);
+            margin-top: 1.5rem;
+            max-width: 580px;
+            line-height: 1.8;
+        }
+
+        .hero-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 2.2rem;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 16px;
+            border: 1px solid var(--border-md);
+            font-size: 11.5px;
+            font-weight: 500;
+            color: var(--text-muted);
+            letter-spacing: 0.04em;
+            background: transparent;
+        }
+
+        /* Badge de especialidade → sálvia (TCC + Neuropsicologia = identidade desta página) */
+        .badge-sage {
+            background: var(--sage-pale);
+            border-color: var(--sage-mid);
+            color: var(--sage-dark);
+        }
+
+        .hero-photo {
+            width: 100%;
+            aspect-ratio: 4/3.9;
+            object-fit: cover;
+            object-position: center 55%;
+            display: block;
+        }
+
+        .hero-photo-frame {
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Faixa tricolor no topo da foto — espelha as 3 cores da logo */
+        .hero-photo-frame::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg,
+                    var(--slate-mid) 0%,
+                    var(--peach-mid) 50%,
+                    var(--sage-mid) 100%);
+            z-index: 1;
+        }
+
+        /* ── DORES ── */
+        #dores {
+            background: var(--bg-dores);
+            padding: 96px 0;
+            border-top: 1px solid var(--section-divider);
+        }
+
+        .dores-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            margin-top: 3.2rem;
+        }
+
+        .dor-item {
+            background: rgba(255, 255, 255, 0.55);
+            border: 1px solid var(--border);
+            padding: 28px 30px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: border-color 0.2s;
+        }
+
+        .dor-item:hover {
+            border-color: var(--border-md);
+        }
+
+        .dor-icon {
+            width: 42px;
+            height: 42px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--neutral-pale);
+        }
+
+        .dor-icon svg {
+            width: 20px;
+            height: 20px;
+            fill: none;
+            stroke: var(--neutral-dark);
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .dor-text {
+            font-size: 15px;
+            color: var(--text-body);
+            line-height: 1.65;
+        }
+
+        /* ── FRASE ── */
+        #frase {
+            background: var(--bg-dark);
+            padding: 112px 0;
+        }
+
+        .frase-inner {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            gap: 88px;
+            align-items: center;
+        }
+
+        .frase-label {
+            font-size: 11.5px;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--neutral-on-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .frase-label::before {
+            content: '';
+            display: block;
+            width: 24px;
+            height: 1px;
+            background: var(--neutral-on-dark-mid);
+        }
+
+        .frase-quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(2rem, 3.1vw, 2.9rem);
+            color: #F0E8DF;
+            line-height: 1.35;
+            letter-spacing: -0.01em;
+        }
+
+        .frase-quote em {
+            font-style: italic;
+            color: var(--sage-mid);
+        }
+
+        /* ── PARA QUEM ── */
+        #para-quem {
+            background: var(--bg-para-quem);
+            padding: 96px 0;
+            border-top: 1px solid var(--section-divider);
+        }
+
+        .para-quem-top {
+            margin-bottom: 2.8rem;
+        }
+
+        .pq-row-wrap {
+            display: flex;
+            border: 1px solid var(--border-md);
+            border-left: none;
+        }
+
+        .pq-col {
+            flex: 1;
+            border-left: 1px solid var(--border-md);
+            padding: 48px 28px;
+            display: flex;
+            flex-direction: column;
+            background: rgba(255, 255, 255, 0.45);
+            transition: background 0.2s;
+        }
+
+        .pq-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: var(--neutral-mid);
+            display: block;
+            margin-bottom: 24px;
+            line-height: 1;
+        }
+
+        .pq-col-text {
+            font-size: 15.5px;
+            color: var(--text-body);
+            line-height: 1.7;
+        }
+
+        /* ── ENTREGÁVEIS ── */
+        #entregaveis {
+            background: var(--bg-entregaveis);
+            padding: 96px 0;
+            border-top: 1px solid var(--section-divider);
+        }
+
+        .entregaveis-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-top: 3.2rem;
+        }
+
+        .entregavel-card {
+            background: rgba(255, 255, 255, 0.55);
+            border: 1px solid var(--border);
+            padding: 40px 30px 44px;
+            display: flex;
+            flex-direction: column;
+            transition: border-color 0.2s;
+        }
+
+        .entregavel-card:hover {
+            border-color: var(--border-md);
+        }
+
+        .entregavel-icon {
+            margin-bottom: 26px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .entregavel-icon svg {
+            width: 26px;
+            height: 26px;
+            fill: none;
+            stroke-width: 1.4;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .entregavel-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--bordeaux);
+            margin-bottom: 13px;
+            line-height: 1.3;
+        }
+
+        .entregavel-desc {
+            font-size: 14.5px;
+            color: var(--text-muted);
+            line-height: 1.75;
+        }
+
+        /* ── CTA ── */
+        #cta {
+            background: var(--bg-dark);
+            padding: 108px 0;
+            text-align: center;
+        }
+
+        #cta .display {
+            color: #F0E8DF;
+        }
+
+        /* CTA permanece pêssego em todas as páginas — cor fixa de conversão */
+        #cta .display em {
+            color: var(--peach-mid);
+        }
+
+        .cta-subtitle {
+            font-size: 15.5px;
+            color: rgba(240, 232, 223, 0.55);
+            margin: 1.3rem auto 2.8rem;
+            max-width: 440px;
+            line-height: 1.75;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 13px 32px;
+            background: var(--peach);
+            color: #FDFCFA;
+            font-size: 12.5px;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: opacity 0.2s, transform 0.15s;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.88;
+            transform: translateY(-1px);
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: #2E1F18;
+            padding: 64px 0 36px;
+        }
+
+        .footer-inner {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.2fr;
+            gap: 48px;
+            padding-bottom: 48px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+            margin-bottom: 28px;
+        }
+
+        .footer-tagline {
+            font-size: 13px;
+            color: var(--neutral-on-dark-mid);
+            opacity: 0.75;
+            line-height: 1.7;
+            max-width: 370px;
+        }
+
+        .footer-heading {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--neutral-on-dark);
+            opacity: 0.5;
+            margin-bottom: 14px;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+        }
+
+        .footer-links a {
+            font-size: 13px;
+            color: var(--neutral-on-dark-mid);
+            opacity: 0.75;
+            text-decoration: none;
+            transition: opacity 0.2s;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .footer-links-chevron a::before {
+            content: '›';
+            display: inline-block;
+            margin-right: 8px;
+            color: var(--peach-mid);
+            font-size: 15px;
+            line-height: 1;
+        }
+
+        .footer-contact-icon {
+            width: 15px;
+            height: 15px;
+            margin-right: 10px;
+            flex-shrink: 0;
+            color: var(--peach-mid);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-bottom span {
+            font-size: 12px;
+            color: var(--neutral-on-dark-mid);
+            opacity: 0.45;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .footer-socials a {
+            color: var(--neutral-on-dark-mid);
+            opacity: 0.5;
+            transition: opacity 0.2s;
+            text-decoration: none;
+        }
+
+        .footer-socials a:hover {
+            opacity: 1;
+        }
+
+        .footer-socials svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* ── MOBILE NAV ── */
+        @media (max-width: 1024px) {
+            .container,
+            .nav-inner {
+                padding: 0 20px;
+            }
+
+            .nav-inner {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                height: 76px;
+            }
+
+            .nav-logo img {
+                height: 58px;
+            }
+
+            .nav-links {
+                display: flex;
+                flex-direction: column;
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: var(--bg-hero);
+                padding: 88px 30px 40px;
+                gap: 20px;
+                box-shadow: -10px 0 30px rgba(0, 0, 0, 0.05);
+                transition: right 0.3s ease;
+                z-index: 999;
+                align-items: flex-start;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links a {
+                font-size: 14px;
+                width: 100%;
+            }
+
+            .nav-dropdown {
+                width: 100%;
+            }
+
+            .dropdown-menu {
+                position: static;
+                transform: none;
+                box-shadow: none;
+                border: none;
+                background: rgba(0, 0, 0, 0.02);
+                width: 100%;
+                margin-top: 8px;
+                padding-left: 16px;
+            }
+
+            .dropdown-menu a {
+                font-size: 13px;
+                padding: 10px 0;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            }
+
+            .nav-cta {
+                display: none;
+            }
+
+            .nav-toggle {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                width: 24px;
+                height: 16px;
+                background: none;
+                border: none;
+                cursor: pointer;
+                padding: 0;
+                z-index: 1000;
+            }
+
+            .nav-toggle span {
+                display: block;
+                width: 100%;
+                height: 2px;
+                background-color: var(--text-primary);
+                transition: transform 0.3s ease, opacity 0.3s ease;
+                transform-origin: center;
+            }
+
+            .nav-toggle.active span:nth-child(1) {
+                transform: translateY(7px) rotate(45deg);
+            }
+
+            .nav-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .nav-toggle.active span:nth-child(3) {
+                transform: translateY(-7px) rotate(-45deg);
+            }
+
+            /* Footer Alignment */
+            .footer-inner {
+                grid-template-columns: 1fr;
+                gap: 32px;
+                text-align: center;
+            }
+
+            .footer-tagline {
+                margin: 0 auto;
+            }
+
+            .footer-socials {
+                justify-content: center;
+            }
+
+            .footer-links {
+                align-items: center;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+        }
+
+        /* ── MOBILE LAYOUT ── */
+        @media (max-width: 900px) {
+
+            .container,
+            .nav-inner {
+                padding: 0 20px;
+            }
+
+            #hero,
+            #dores,
+            #para-quem,
+            #entregaveis,
+            #cta,
+            #frase {
+                padding: 64px 0;
+            }
+
+            .hero-inner {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-right {
+                order: -1;
+            }
+
+            .hero-photo {
+                aspect-ratio: 4/4.2;
+                object-position: center 20%;
+                max-width: 520px;
+                margin: 0 auto;
+            }
+
+            .hero-photo-frame {
+                max-width: 520px;
+                margin: 0 auto;
+            }
+
+            .dores-grid,
+            .entregaveis-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .frase-inner {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+
+            .pq-row-wrap {
+                flex-direction: column;
+                border-left: 1px solid var(--border-md);
+                border-top: none;
+            }
+
+            .pq-col {
+                border-left: none;
+                border-top: 1px solid var(--border-md);
+            }
+
+            /* Content Alignment */
+            .hero-left {
+                text-align: center;
+            }
+
+            .hero-subtitle {
+                margin: 1.5rem auto 0;
+                text-align: center;
+            }
+
+            .hero-badges {
+                justify-content: center;
+            }
+
+            .section-label {
+                justify-content: center;
+            }
+
+            .section-title {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">
+                <img src="assets/logoteste.png" alt="Juliana Munhoz">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="sobre.html">Sobre mim</a></li>
+                <li class="nav-dropdown">
+                    <a href="#" aria-haspopup="true" aria-expanded="false">Serviços</a>
+                    <div class="dropdown-menu">
+                        <a href="psicoterapia.html" class="active">Psicoterapia</a>
+                        <a href="mentoria.html">Mentoria</a>
+                        <a href="consultoria.html">Consultoria</a>
+                    </div>
+                </li>
+                <li><a href="reembolso.html">Reembolso</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+            <a href="https://wa.me/5511925410867" class="nav-cta">Agendar conversa</a>
+            <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="hero">
+        <div class="container">
+            <div class="hero-inner">
+                <div class="hero-left">
+                    <p class="section-label">Cuidado psicológico para adultos</p>
+                    <h1 class="display">
+                        Psicoterapia baseada em TCC e Neuropsicologia
+                    </h1>
+                    <p class="hero-subtitle">
+                        Um espaço terapêutico estruturado para acolher demandas emocionais, compreender padrões
+                        comportamentais e ampliar recursos internos para lidar com desafios da vida.
+                    </p>
+                    <div class="hero-badges">
+                        <span class="badge">23 anos de formação</span>
+                        <span class="badge badge-sage">TCC + Neuropsicologia</span>
+                    </div>
+                </div>
+                <div class="hero-right">
+                    <div class="hero-photo-frame">
+                        <img src="assets/juliana-foto.png" alt="Juliana Munhoz, psicóloga especialista em TCC"
+                            class="hero-photo">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DORES -->
+    <section id="dores">
+        <div class="container">
+            <p class="section-label">Dores que resolve</p>
+            <h2 class="section-title">O que te trouxe até aqui?</h2>
+            <div class="dores-grid">
+
+                <!-- ANSIEDADE — ondas de tensão/pulso acelerado -->
+                <div class="dor-item">
+                    <div class="dor-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M3 12h3l2-5 4 10 2-7 1.5 2H21" />
+                            <circle cx="12" cy="12" r="9" opacity="0.3" />
+                        </svg>
+                    </div>
+                    <p class="dor-text">Ansiedade e estresse</p>
+                </div>
+
+                <!-- AUTOCRÍTICA — rosto -->
+                <div class="dor-item">
+                    <div class="dor-icon">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M8 15s1.5-2 4-2 4 2 4 2" />
+                            <line x1="9" y1="9" x2="9.01" y2="9" />
+                            <line x1="15" y1="9" x2="15.01" y2="9" />
+                        </svg>
+                    </div>
+                    <p class="dor-text">Autocrítica intensa</p>
+                </div>
+
+                <!-- PADRÕES — ciclo circular que se repete -->
+                <div class="dor-item">
+                    <div class="dor-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M3 12a9 9 0 0 1 15.5-6.3M21 12a9 9 0 0 1-15.5 6.3" />
+                            <path d="M18 2v4h-4M6 22v-4h4" />
+                        </svg>
+                    </div>
+                    <p class="dor-text">Padrões repetitivos</p>
+                </div>
+
+                <!-- ESGOTAMENTO — o que paralisa -->
+                <div class="dor-item">
+                    <div class="dor-icon">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="2" y="7" width="16" height="10" rx="2" />
+                            <path d="M22 11v2" />
+                            <line x1="6" y1="11" x2="6" y2="13" />
+                        </svg>
+                    </div>
+                    <p class="dor-text">Sobrecarga emocional</p>
+                </div>
+
+                <!-- RELACIONAMENTOS — coração quebrado -->
+                <div class="dor-item">
+                    <div class="dor-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                            <path d="M13 6l-2.5 4.5 3 2-2 5.5" />
+                        </svg>
+                    </div>
+                    <p class="dor-text">Dificuldades relacionais</p>
+                </div>
+
+                <!-- AUTOCONHECIMENTO — o que pode crescer -->
+                <div class="dor-item">
+                    <div class="dor-icon">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="11" cy="11" r="8" />
+                            <path d="m21 21-4.35-4.35" />
+                        </svg>
+                    </div>
+                    <p class="dor-text">Busca por autoconhecimento</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FRASE -->
+    <section id="frase">
+        <div class="container">
+            <div class="frase-inner">
+                <span class="frase-label">A virada começa aqui</span>
+                <p class="frase-quote">
+                    Você não precisa carregar tudo só.<br>
+                    Com método, escuta e <em>transformação</em>, é possível<br>
+                    converter o que dói em clareza e movimento.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PARA QUEM -->
+    <section id="para-quem">
+        <div class="container">
+            <div class="para-quem-top">
+                <p class="section-label">Para quem é</p>
+                <h2 class="section-title">Esse processo é para você que…</h2>
+            </div>
+            <div class="pq-row-wrap">
+                <div class="pq-col">
+                    <span class="pq-number">01</span>
+                    <p class="pq-col-text">Busca compreender emoções e padrões internos</p>
+                </div>
+                <div class="pq-col">
+                    <span class="pq-number">02</span>
+                    <p class="pq-col-text">Deseja ampliar repertório emocional</p>
+                </div>
+                <div class="pq-col">
+                    <span class="pq-number">03</span>
+                    <p class="pq-col-text">Busca um espaço técnico, ético e acolhedor</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ENTREGÁVEIS -->
+    <section id="entregaveis">
+        <div class="container">
+            <p class="section-label">O que está incluso</p>
+            <h2 class="section-title">Entregáveis</h2>
+            <div class="entregaveis-grid">
+
+                <!-- Ícone ardósia: sessões = estrutura/tempo -->
+                <div class="entregavel-card">
+                    <div class="entregavel-icon">
+                        <svg viewBox="0 0 24 24" style="stroke:var(--slate)">
+                            <rect x="3" y="4" width="18" height="18" rx="2" />
+                            <path d="M16 2v4M8 2v4M3 10h18" />
+                        </svg>
+                    </div>
+                    <p class="entregavel-title"> Estrutura das sessões</p>
+                    <p class="entregavel-desc">Encontros regulares, realizados de forma online, com duração e frequência definidos no plano
+                        terapêutico.</p>
+                </div>
+
+                <!-- Ícone sálvia: plano = crescimento personalizado -->
+                <div class="entregavel-card">
+                    <div class="entregavel-icon">
+                        <svg viewBox="0 0 24 24" style="stroke:var(--sage)">
+                            <path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+                        </svg>
+                    </div>
+                    <p class="entregavel-title">Plano terapêutico individualizado</p>
+                    <p class="entregavel-desc">Estrutura personalizada com metas, abordagem e ferramentas adequadas ao
+                        seu caso.</p>
+                </div>
+
+                <!-- Ícone pêssego: ferramentas = ação/movimento -->
+                <div class="entregavel-card">
+                    <div class="entregavel-icon">
+                        <svg viewBox="0 0 24 24" style="stroke:var(--peach)">
+                            <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
+                            <polyline points="14 2 14 8 20 8" />
+                            <line x1="9" y1="13" x2="15" y2="13" />
+                            <line x1="9" y1="17" x2="12" y2="17" />
+                        </svg>
+                    </div>
+                    <p class="entregavel-title">Ferramentas psicoeducativas</p>
+                    <p class="entregavel-desc">Recursos concretos para aplicar entre sessões e acelerar o processo de
+                        mudança.</p>
+                </div>
+
+                <!-- Ícone sálvia: evolução = transformação/crescimento -->
+                <div class="entregavel-card">
+                    <div class="entregavel-icon">
+                        <svg viewBox="0 0 24 24" style="stroke:var(--sage)">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                        </svg>
+                    </div>
+                    <p class="entregavel-title">Acompanhamento contínuo</p>
+                    <p class="entregavel-desc">Revisão contínua do progresso com ajustes no plano conforme necessidade.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="cta">
+        <div class="container">
+            <h2 class="display">Agende sua entrevista inicial</h2>
+            <p class="cta-subtitle">Agende uma sessão inicial e dê o primeiro passo com quem entende de ciência e de
+                gente.</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn-primary">Agendar agora →</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-inner">
+                <div>
+                    <p class="footer-tagline">Atuação em psicoterapia, mentoria de carreira e consultoria
+                        empresarial. Faturamento por JM Desenvolvimento Humano Ltda. A psicoterapia segue as
+                        diretrizes do CFP; mentoria e consultoria não substituem acompanhamento psicológico ou
+                        psiquiátrico.</p>
+                    <div class="footer-socials">
+                        <a href="https://www.linkedin.com/in/juliana-tonelli-munhoz/" target="_blank" rel="noopener"
+                            aria-label="LinkedIn">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z" />
+                            </svg>
+                        </a>
+                        <a href="https://instagram.com/julianamunhoz_psi" target="_blank" rel="noopener"
+                            aria-label="Instagram">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                <rect x="3" y="3" width="18" height="18" rx="5" />
+                                <circle cx="12" cy="12" r="4" />
+                                <circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <p class="footer-heading">Páginas</p>
+                    <ul class="footer-links footer-links-chevron">
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="sobre.html">Sobre mim</a></li>
+                        <li><a href="reembolso.html">Reembolso</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="footer-heading">Serviços</p>
+                    <ul class="footer-links footer-links-chevron">
+                        <li><a href="psicoterapia.html">Psicoterapia</a></li>
+                        <li><a href="mentoria.html">Mentoria individual feminina</a></li>
+                        <li><a href="consultoria.html">Consultoria empresarial</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="footer-heading">Contatos</p>
+                    <ul class="footer-links footer-links-icon">
+                        <li>
+                            <a href="https://wa.me/5511925410867" target="_blank" rel="noopener">
+                                <svg class="footer-contact-icon" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path
+                                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+                                </svg>
+                                (11) 92541-0867
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:jmdesenvolvimentohumano26@gmail.com">
+                                <svg class="footer-contact-icon" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M4 4h16v16H4z" opacity="0" />
+                                    <path d="M22 6l-10 7L2 6" />
+                                    <rect x="2" y="4" width="20" height="16" rx="2" />
+                                </svg>
+                                jmdesenvolvimentohumano26@gmail.com
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 Juliana Munhoz · Psicóloga CRP 06/75056</span>
+                <span>Desenvolvido por Mauá Júnior</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.nav-dropdown').forEach((dropdown) => {
+            const trigger = dropdown.querySelector('a');
+            const close = () => {
+                dropdown.classList.remove('open');
+                trigger.setAttribute('aria-expanded', 'false');
+            };
+            trigger.addEventListener('click', (e) => {
+                e.preventDefault();
+                const willOpen = !dropdown.classList.contains('open');
+                document.querySelectorAll('.nav-dropdown.open').forEach(d => {
+                    if (d !== dropdown) {
+                        d.classList.remove('open');
+                        d.querySelector('a').setAttribute('aria-expanded', 'false');
+                    }
+                });
+                dropdown.classList.toggle('open', willOpen);
+                trigger.setAttribute('aria-expanded', String(willOpen));
+            });
+            document.addEventListener('click', (e) => { if (!dropdown.contains(e.target)) close(); });
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+        });
+
+        // Hamburger Menu Toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        if (navToggle && navLinks) {
+            navToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+                navToggle.setAttribute('aria-expanded', !expanded);
+                navToggle.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+
+            document.addEventListener('click', (e) => {
+                if (navLinks.classList.contains('active') && !navLinks.contains(e.target) && !navToggle.contains(e.target)) {
+                    navToggle.classList.remove('active');
+                    navLinks.classList.remove('active');
+                    navToggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+                    navToggle.classList.remove('active');
+                    navLinks.classList.remove('active');
+                    navToggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato — Juliana Munhoz · Psicóloga</title>
+    <meta name="description"
+        content="Entre em contato com Juliana Munhoz — Psicóloga especialista em TCC e Neuropsicologia. WhatsApp, e-mail, Instagram e LinkedIn.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg-hero: #F5F0E8;
+            --bg-dores: #F0EBE2;
+            --bg-para-quem: #E8E2D8;
+            --bg-entregaveis: #E4DED4;
+            --bg-dark: #3B2820;
+
+            --bordeaux: #5C2D1E;
+            --bordeaux-pale: #F5E8E2;
+            --bordeaux-mid: #D4A090;
+
+            --peach: #C4745A;
+            --peach-pale: #F5E8E2;
+            --peach-mid: #E8A98C;
+            --peach-light: #FAEAE3;
+
+            --slate: #6B8BA4;
+            --slate-pale: #E8EFF4;
+            --slate-mid: #B8CEDC;
+            --slate-dark: #4A6478;
+
+            --sage: #7A9E84;
+            --sage-pale: #E5EFE7;
+            --sage-mid: #B2CCBA;
+            --sage-dark: #567A60;
+
+            --neutral: #A89A8C;
+            --neutral-pale: #EFE9E1;
+            --neutral-mid: #D9C9B8;
+            --neutral-dark: #8B7363;
+
+            --neutral-on-dark: #D8C4AE;
+            --neutral-on-dark-mid: #C9B49C;
+
+            --text-primary: #5C2D1E;
+            --text-body: #4A3A30;
+            --text-muted: #A08070;
+
+            --border: rgba(107, 139, 164, 0.12);
+            --border-md: rgba(107, 139, 164, 0.22);
+            --section-divider: rgba(107, 139, 164, 0.10);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-hero);
+            color: var(--text-body);
+            font-size: 16px;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .display {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(2.6rem, 6vw, 4.2rem);
+            line-height: 1.1;
+            color: var(--bordeaux);
+            letter-spacing: -0.01em;
+        }
+
+        .display em {
+            font-style: italic;
+            color: var(--peach);
+        }
+
+        .section-label {
+            font-size: 11.5px;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--neutral-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 1.1rem;
+        }
+
+        .section-label::before {
+            content: '';
+            display: block;
+            width: 24px;
+            height: 1px;
+            background: var(--neutral-mid);
+        }
+
+        .container {
+            max-width: 1480px;
+            margin: 0 auto;
+            padding: 0 72px;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--bg-hero);
+            border-bottom: 1px solid var(--section-divider);
+        }
+
+        .nav-inner {
+            max-width: 1480px;
+            margin: 0 auto;
+            padding: 0 72px;
+            height: 104px;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+        }
+
+        .nav-logo {
+            grid-column: 1;
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .nav-logo img {
+            height: 70px;
+            width: auto;
+            display: block;
+        }
+
+        .nav-links {
+            grid-column: 2;
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            display: inline-flex;
+            align-items: center;
+            font-size: 13.5px;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--peach);
+        }
+
+        .nav-links a.active {
+            color: var(--peach);
+        }
+
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .nav-dropdown>a {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .nav-dropdown>a::after {
+            content: '';
+            width: 5px;
+            height: 5px;
+            border-right: 1.5px solid currentColor;
+            border-bottom: 1.5px solid currentColor;
+            transform: rotate(45deg) translateY(-2px);
+            transition: transform 0.2s;
+        }
+
+        .nav-dropdown.open>a::after {
+            transform: rotate(-135deg) translateY(-2px);
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 14px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--bg-hero);
+            border: 1px solid var(--border-md);
+            min-width: 170px;
+            flex-direction: column;
+        }
+
+        .nav-dropdown.open .dropdown-menu {
+            display: flex;
+        }
+
+        .dropdown-menu a {
+            padding: 11px 20px;
+            font-size: 11.5px;
+            font-weight: 500;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            text-decoration: none;
+            border-bottom: 1px solid var(--border);
+            transition: background 0.15s, color 0.15s;
+            white-space: nowrap;
+        }
+
+        .dropdown-menu a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-menu a:hover {
+            background: var(--peach-pale);
+            color: var(--peach);
+        }
+
+        .nav-cta {
+            grid-column: 3;
+            justify-self: end;
+            display: inline-flex;
+            align-items: center;
+            padding: 11px 26px;
+            border: 1px solid var(--border-md);
+            font-size: 12.5px;
+            font-weight: 500;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            color: var(--bordeaux);
+            text-decoration: none;
+            transition: background 0.2s, border-color 0.2s;
+        }
+
+        .nav-cta:hover {
+            background: var(--peach-pale);
+            border-color: var(--peach-mid);
+        }
+
+        .nav-toggle {
+            display: none;
+        }
+
+        /* ── HERO CONTATO ── */
+        #hero-contato {
+            background: var(--bg-hero);
+            padding: 80px 0 96px;
+            border-bottom: 1px solid var(--section-divider);
+        }
+
+        .hero-contato-inner {
+            max-width: 620px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-contato-inner .section-label {
+            justify-content: center;
+        }
+
+        .hero-contato-inner .section-label::before {
+            display: none;
+        }
+
+        .hero-contato-sub {
+            font-size: 16.5px;
+            color: var(--text-muted);
+            margin-top: 1.4rem;
+            line-height: 1.85;
+        }
+
+        /* ── CANAIS ── */
+        #canais {
+            background: var(--bg-dores);
+            padding: 104px 0;
+            border-top: 1px solid var(--section-divider);
+        }
+
+        .canais-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2px;
+            margin-top: 56px;
+        }
+
+        .canal-card {
+            background: var(--bg-hero);
+            padding: 52px 48px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            text-decoration: none;
+            transition: background 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .canal-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .canal-card:hover {
+            background: #FDFCFA;
+        }
+
+        .canal-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .canal-card.c-whatsapp::after {
+            background: var(--sage);
+        }
+
+        .canal-card.c-email::after {
+            background: var(--peach);
+        }
+
+        .canal-card.c-instagram::after {
+            background: var(--bordeaux-mid);
+        }
+
+        .canal-card.c-linkedin::after {
+            background: var(--slate);
+        }
+
+        .canal-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0;
+        }
+
+        .canal-icon svg {
+            width: 26px;
+            height: 26px;
+        }
+
+        .canal-card.c-whatsapp .canal-icon {
+            background: var(--sage-pale);
+        }
+
+        .canal-card.c-whatsapp .canal-icon svg {
+            stroke: var(--sage-dark);
+            fill: none;
+        }
+
+        .canal-card.c-email .canal-icon {
+            background: var(--peach-pale);
+        }
+
+        .canal-card.c-email .canal-icon svg {
+            stroke: var(--peach);
+            fill: none;
+        }
+
+        .canal-card.c-instagram .canal-icon {
+            background: var(--bordeaux-pale);
+        }
+
+        .canal-card.c-instagram .canal-icon svg {
+            stroke: var(--bordeaux);
+            fill: none;
+        }
+
+        .canal-card.c-linkedin .canal-icon {
+            background: var(--slate-pale);
+        }
+
+        .canal-card.c-linkedin .canal-icon svg {
+            fill: var(--slate-dark);
+            stroke: none;
+        }
+
+        .canal-label {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .canal-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            font-size: 1.7rem;
+            color: var(--bordeaux);
+            line-height: 1.2;
+        }
+
+        .canal-desc {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        .canal-arrow {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11.5px;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--neutral-dark);
+            margin-top: auto;
+            padding-top: 8px;
+        }
+
+        .canal-arrow svg {
+            width: 14px;
+            height: 14px;
+            transition: transform 0.2s;
+        }
+
+        .canal-card:hover .canal-arrow svg {
+            transform: translateX(4px);
+        }
+
+        /* ── FRASE FINAL ── */
+        #frase-contato {
+            background: var(--bg-dark);
+            padding: 96px 0;
+        }
+
+        .frase-contato-inner {
+            text-align: center;
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        .frase-contato-quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+            color: #F0E8DF;
+            line-height: 1.35;
+        }
+
+        .frase-contato-quote em {
+            font-style: italic;
+            color: var(--peach-mid);
+        }
+
+        .frase-contato-label {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--neutral-on-dark-mid);
+            opacity: 0.5;
+            margin-bottom: 1.6rem;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: #2E1F18;
+            padding: 64px 0 36px;
+        }
+
+        .footer-inner {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.2fr;
+            gap: 48px;
+            padding-bottom: 48px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+            margin-bottom: 28px;
+        }
+
+        .footer-tagline {
+            font-size: 13px;
+            color: var(--neutral-on-dark-mid);
+            opacity: 0.75;
+            line-height: 1.7;
+            max-width: 370px;
+        }
+
+        .footer-heading {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--neutral-on-dark);
+            opacity: 0.5;
+            margin-bottom: 14px;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+        }
+
+        .footer-links a {
+            font-size: 13px;
+            color: var(--neutral-on-dark-mid);
+            opacity: 0.75;
+            text-decoration: none;
+            transition: opacity 0.2s;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .footer-links-chevron a::before {
+            content: '›';
+            display: inline-block;
+            margin-right: 8px;
+            color: var(--peach-mid);
+            font-size: 15px;
+            line-height: 1;
+        }
+
+        .footer-contact-icon {
+            width: 15px;
+            height: 15px;
+            margin-right: 10px;
+            flex-shrink: 0;
+            color: var(--peach-mid);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-bottom span {
+            font-size: 12px;
+            color: var(--neutral-on-dark-mid);
+            opacity: 0.45;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .footer-socials a {
+            color: var(--neutral-on-dark-mid);
+            opacity: 0.5;
+            transition: opacity 0.2s;
+            text-decoration: none;
+        }
+
+        .footer-socials a:hover {
+            opacity: 1;
+        }
+
+        .footer-socials svg {
+            width: 16px;
+            height: 16px;
+        }
+        
+        /* ── MOBILE NAVIGATION ── */
+        @media (max-width: 1024px) {
+            .container,
+            .nav-inner {
+                padding: 0 20px;
+            }
+
+            .nav-inner {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                height: 76px;
+            }
+
+            .nav-logo img {
+                height: 58px;
+            }
+
+            .nav-links {
+                display: flex;
+                flex-direction: column;
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: var(--bg-hero);
+                padding: 88px 30px 40px;
+                gap: 20px;
+                box-shadow: -10px 0 30px rgba(0, 0, 0, 0.05);
+                transition: right 0.3s ease;
+                z-index: 999;
+                align-items: flex-start;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links a {
+                font-size: 14px;
+                width: 100%;
+            }
+
+            .nav-dropdown {
+                width: 100%;
+            }
+
+            .dropdown-menu {
+                position: static;
+                transform: none;
+                box-shadow: none;
+                border: none;
+                background: rgba(0, 0, 0, 0.02);
+                width: 100%;
+                margin-top: 8px;
+                padding-left: 16px;
+            }
+
+            .dropdown-menu a {
+                font-size: 13px;
+                padding: 10px 0;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            }
+
+            .nav-cta {
+                display: none;
+            }
+
+            .nav-toggle {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                width: 24px;
+                height: 16px;
+                background: none;
+                border: none;
+                cursor: pointer;
+                padding: 0;
+                z-index: 1000;
+            }
+
+            .nav-toggle span {
+                display: block;
+                width: 100%;
+                height: 2px;
+                background-color: var(--text-primary);
+                transition: transform 0.3s ease, opacity 0.3s ease;
+                transform-origin: center;
+            }
+
+            .nav-toggle.active span:nth-child(1) {
+                transform: translateY(7px) rotate(45deg);
+            }
+
+            .nav-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .nav-toggle.active span:nth-child(3) {
+                transform: translateY(-7px) rotate(-45deg);
+            }
+
+            /* Footer Alignment */
+            .footer-inner {
+                grid-template-columns: 1fr;
+                gap: 32px;
+                text-align: center;
+            }
+
+            .footer-tagline {
+                margin: 0 auto;
+            }
+
+            .footer-socials {
+                justify-content: center;
+            }
+
+            .footer-links {
+                align-items: center;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+        }
+
+        /* ── MOBILE LAYOUT ── */
+        @media (max-width: 900px) {
+            #hero-contato,
+            #canais,
+            #frase-contato {
+                padding: 64px 0;
+            }
+
+            .hero-contato-inner {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .canais-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .canal-card {
+                padding: 36px 28px;
+                align-items: center;
+                text-align: center;
+            }
+
+            .canal-arrow {
+                justify-content: center;
+            }
+
+            /* Content Alignment */
+            .hero-contato-inner {
+                text-align: center;
+            }
+
+            .hero-contato-sub {
+                margin-left: auto;
+                margin-right: auto;
+                text-align: center;
+            }
+
+            .section-label {
+                justify-content: center;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">
+                <img src="assets/logoteste.png" alt="Juliana Munhoz">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="sobre.html">Sobre mim</a></li>
+                <li class="nav-dropdown">
+                    <a href="#" aria-haspopup="true" aria-expanded="false">Serviços</a>
+                    <div class="dropdown-menu">
+                        <a href="psicoterapia.html">Psicoterapia</a>
+                        <a href="mentoria.html">Mentoria</a>
+                        <a href="consultoria.html">Consultoria</a>
+                    </div>
+                </li>
+                <li><a href="reembolso.html">Reembolso</a></li>
+                <li><a href="contato.html" class="active">Contato</a></li>
+            </ul>
+            <a href="https://wa.me/5511925410867" class="nav-cta">Agendar conversa</a>
+            <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="hero-contato">
+        <div class="container">
+            <div class="hero-contato-inner">
+                <div>
+                    <p class="section-label">Contato</p>
+                    <h1 class="display">
+                        Vamos <em>conversar</em>?
+                    </h1>
+                    <p class="hero-contato-sub">
+                        Seja para psicoterapia, mentoria ou
+                        consultoria, escolha o canal que fizer mais sentido para você.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CANAIS -->
+    <section id="canais">
+        <div class="container">
+            <p class="section-label">Canais</p>
+            <div class="canais-grid">
+
+                <!-- WhatsApp -->
+                <a href="https://wa.me/5511925410867" target="_blank" rel="noopener" class="canal-card c-whatsapp">
+                    <div class="canal-icon">
+                        <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                        </svg>
+                    </div>
+                    <p class="canal-label">Mensagem direta</p>
+                    <p class="canal-title">WhatsApp</p>
+                    <p class="canal-desc">(11) 92541-0867 — canal preferencial para agendamentos e dúvidas rápidas.</p>
+                    <span class="canal-arrow">
+                        Enviar mensagem
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                            <path d="M5 12h14M13 6l6 6-6 6" />
+                        </svg>
+                    </span>
+                </a>
+
+                <!-- E-mail -->
+                <a href="mailto:jmdesenvolvimentohumano26@gmail.com" class="canal-card c-email">
+                    <div class="canal-icon">
+                        <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                            <polyline points="22,6 12,13 2,6" />
+                        </svg>
+                    </div>
+                    <p class="canal-label">Contato formal</p>
+                    <p class="canal-title">E-mail</p>
+                    <p class="canal-desc">jmdesenvolvimentohumano26@gmail.com — para propostas, parcerias e contatos
+                        mais formais.</p>
+                    <span class="canal-arrow">
+                        Escrever e-mail
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                            <path d="M5 12h14M13 6l6 6-6 6" />
+                        </svg>
+                    </span>
+                </a>
+
+                <!-- Instagram -->
+                <a href="https://instagram.com/julianamunhoz_psi" target="_blank" rel="noopener"
+                    class="canal-card c-instagram">
+                    <div class="canal-icon">
+                        <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="3" width="18" height="18" rx="5" />
+                            <circle cx="12" cy="12" r="4" />
+                            <circle cx="17.2" cy="6.8" r="1" fill="var(--bordeaux)" stroke="none" />
+                        </svg>
+                    </div>
+                    <p class="canal-label">Redes sociais</p>
+                    <p class="canal-title">Instagram</p>
+                    <p class="canal-desc">@julianamunhoz_psi — conteúdo sobre carreira, saúde mental e desenvolvimento
+                        humano.</p>
+                    <span class="canal-arrow">
+                        Ver perfil
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                            <path d="M5 12h14M13 6l6 6-6 6" />
+                        </svg>
+                    </span>
+                </a>
+
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/in/juliana-tonelli-munhoz/" target="_blank" rel="noopener"
+                    class="canal-card c-linkedin">
+                    <div class="canal-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z" />
+                        </svg>
+                    </div>
+                    <p class="canal-label">Rede profissional</p>
+                    <p class="canal-title">LinkedIn</p>
+                    <p class="canal-desc">Juliana Tonelli Munhoz — trajetória profissional, publicações e conexões
+                        corporativas.</p>
+                    <span class="canal-arrow">
+                        Ver perfil
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                            <path d="M5 12h14M13 6l6 6-6 6" />
+                        </svg>
+                    </span>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FRASE -->
+    <section id="frase-contato">
+        <div class="container">
+            <div class="frase-contato-inner">
+                <p class="frase-contato-label">Uma conversa pode mudar tudo</p>
+                <p class="frase-contato-quote">
+                    O primeiro passo é simples:<br>
+                    basta <em>dizer olá</em>.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-inner">
+                <div>
+                    <p class="footer-tagline">Atuação em psicoterapia, mentoria de carreira e consultoria
+                        empresarial. Faturamento por JM Desenvolvimento Humano Ltda. A psicoterapia segue as
+                        diretrizes do CFP; mentoria e consultoria não substituem acompanhamento psicológico ou
+                        psiquiátrico.</p>
+                    <div class="footer-socials">
+                        <a href="https://www.linkedin.com/in/juliana-tonelli-munhoz/" target="_blank" rel="noopener"
+                            aria-label="LinkedIn">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z" />
+                            </svg>
+                        </a>
+                        <a href="https://instagram.com/julianamunhoz_psi" target="_blank" rel="noopener"
+                            aria-label="Instagram">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                <rect x="3" y="3" width="18" height="18" rx="5" />
+                                <circle cx="12" cy="12" r="4" />
+                                <circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <p class="footer-heading">Páginas</p>
+                    <ul class="footer-links footer-links-chevron">
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="sobre.html">Sobre mim</a></li>
+                        <li><a href="reembolso.html">Reembolso</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="footer-heading">Serviços</p>
+                    <ul class="footer-links footer-links-chevron">
+                        <li><a href="psicoterapia.html">Psicoterapia</a></li>
+                        <li><a href="mentoria.html">Mentoria individual feminina</a></li>
+                        <li><a href="consultoria.html">Consultoria empresarial</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="footer-heading">Contatos</p>
+                    <ul class="footer-links footer-links-icon">
+                        <li>
+                            <a href="https://wa.me/5511925410867" target="_blank" rel="noopener">
+                                <svg class="footer-contact-icon" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path
+                                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+                                </svg>
+                                (11) 92541-0867
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:jmdesenvolvimentohumano26@gmail.com">
+                                <svg class="footer-contact-icon" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M4 4h16v16H4z" opacity="0" />
+                                    <path d="M22 6l-10 7L2 6" />
+                                    <rect x="2" y="4" width="20" height="16" rx="2" />
+                                </svg>
+                                jmdesenvolvimentohumano26@gmail.com
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 Juliana Munhoz · Psicóloga CRP 06/75056</span>
+                <span>Desenvolvido por Mauá Júnior</span>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        document.querySelectorAll('.nav-dropdown').forEach((dropdown) => {
+            const trigger = dropdown.querySelector('a');
+            const close = () => {
+                dropdown.classList.remove('open');
+                trigger.setAttribute('aria-expanded', 'false');
+            };
+            trigger.addEventListener('click', (e) => {
+                e.preventDefault();
+                const willOpen = !dropdown.classList.contains('open');
+                document.querySelectorAll('.nav-dropdown.open').forEach(d => {
+                    if (d !== dropdown) {
+                        d.classList.remove('open');
+                        d.querySelector('a').setAttribute('aria-expanded', 'false');
+                    }
+                });
+                dropdown.classList.toggle('open', willOpen);
+                trigger.setAttribute('aria-expanded', String(willOpen));
+            });
+            document.addEventListener('click', (e) => { if (!dropdown.contains(e.target)) close(); });
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+        });
+
+        // Hamburger Menu Toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        if (navToggle && navLinks) {
+            navToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+                navToggle.setAttribute('aria-expanded', !expanded);
+                navToggle.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+
+            document.addEventListener('click', (e) => {
+                if (navLinks.classList.contains('active') && !navLinks.contains(e.target) && !navToggle.contains(e.target)) {
+                    navToggle.classList.remove('active');
+                    navLinks.classList.remove('active');
+                    navToggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+                    navToggle.classList.remove('active');
+                    navLinks.classList.remove('active');
+                    navToggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+        }
+    </script>
+
+</body>
+
+</html>

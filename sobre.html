@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Mim — Juliana Munhoz · Psicóloga</title>
+    <meta name="description"
+        content="Mais de 25 anos ouvindo quem lidera. Conheça a trajetória e a metodologia de Juliana Munhoz, Psicóloga especialista em TCC e Neuropsicologia.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg-hero: #F5F0E8;
+            --bg-dores: #F0EBE2;
+            --bg-para-quem: #E8E2D8;
+            --bg-entregaveis: #E4DED4;
+            --bg-dark: #3B2820;
+
+            --bordeaux: #5C2D1E;
+            --bordeaux-pale: #F5E8E2;
+            --bordeaux-mid: #D4A090;
+
+            --peach: #C4745A;
+            --peach-pale: #F5E8E2;
+            --peach-mid: #E8A98C;
+            --peach-light: #FAEAE3;
+
+            --slate: #6B8BA4;
+            --slate-pale: #E8EFF4;
+            --slate-mid: #B8CEDC;
+            --slate-dark: #4A6478;
+
+            --sage: #7A9E84;
+            --sage-pale: #E5EFE7;
+            --sage-mid: #B2CCBA;
+            --sage-dark: #567A60;
+
+            --neutral: #A89A8C;
+            --neutral-pale: #EFE9E1;
+            --neutral-mid: #D9C9B8;
+            --neutral-dark: #8B7363;
+
+            --neutral-on-dark: #D8C4AE;
+            --neutral-on-dark-mid: #C9B49C;
+
+            --text-primary: #5C2D1E;
+            --text-body: #4A3A30;
+            --text-muted: #A08070;
+
+            --border: rgba(107, 139, 164, 0.12);
+            --border-md: rgba(107, 139, 164, 0.22);
+            --section-divider: rgba(107, 139, 164, 0.10);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-hero);
+            color: var(--text-body);
+            font-size: 16px;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── TIPOGRAFIA ── */
+        .display {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(2.6rem, 6vw, 4.2rem);
+            line-height: 1.1;
+            color: var(--bordeaux);
+            letter-spacing: -0.01em;
+        }
+
+        .display em {
+            font-style: italic;
+            color: var(--peach);
+        }
+
+        .section-label {
+            font-size: 11.5px;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--neutral-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 1.1rem;
+        }
+
+        .section-label::before {
+            content: '';
+            display: block;
+            width: 24px;
+            height: 1px;
+            background: var(--neutral-mid);
+        }
+
+        .section-label.center {
+            justify-content: center;
+        }
+
+        .section-label.center::before {
+            display: none;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            font-size: clamp(2rem, 3.8vw, 2.7rem);
+            color: var(--bordeaux);
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        /* ── LAYOUT ── */
+        .container {
+            max-width: 1480px;
+            margin: 0 auto;
+            padding: 0 72px;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--bg-hero);
+            border-bottom: 1px solid var(--section-divider);
+        }
+
+        .nav-inner {
+            max-width: 1480px;
+            margin: 0 auto;
+            padding: 0 72px;
+            height: 104px;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+        }
+
+        .nav-logo {
+            grid-column: 1;
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .nav-logo img {
+            height: 70px;
+            width: auto;
+            display: block;
+        }
+
+        .nav-links {
+            grid-column: 2;
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            display: inline-flex;
+            align-items: center;
+            font-size: 13.5px;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--peach);
+        }
+
+        .nav-links a.active {
+            color: var(--peach);
+        }
+
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .nav-dropdown>a {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .nav-dropdown>a::after {
+            content: '';
+            width: 5px;
+            height: 5px;
+            border-right: 1.5px solid currentColor;
+            border-bottom: 1.5px solid currentColor;
+            transform: rotate(45deg) translateY(-2px);
+            transition: transform 0.2s;
+        }
+
+        .nav-dropdown.open>a::after {
+            transform: rotate(-135deg) translateY(-2px);
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 14px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--bg-hero);
+            border: 1px solid var(--border-md);
+            min-width: 170px;
+            flex-direction: column;
+        }
+
+        .nav-dropdown.open .dropdown-menu {
+            display: flex;
+        }
+
+        .dropdown-menu a {
+            padding: 11px 20px;
+            font-size: 11.5px;
+            font-weight: 500;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            text-decoration: none;
+            border-bottom: 1px solid var(--border);
+            transition: background 0.15s, color 0.15s;
+            white-space: nowrap;
+        }
+
+        .dropdown-menu a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-menu a:hover {
+            background: var(--peach-pale);
+            color: var(--peach);
+        }
+
+        .nav-cta {
+            grid-column: 3;
+            justify-self: end;
+            display: inline-flex;
+            align-items: center;
+            padding: 11px 26px;
+            border: 1px solid var(--border-md);
+            font-size: 12.5px;
+            font-weight: 500;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            color: var(--bordeaux);
+            text-decoration: none;
+            transition: background 0.2s, border-color 0.2s;
+        }
+
+        .nav-cta:hover {
+            background: var(--peach-pale);
+            border-color: var(--peach-mid);
+        }
+
+        .nav-toggle {
+            display: none;
+        }
+
+        /* ── HERO SOBRE ── */
+        #hero-sobre {
+            background: var(--bg-hero);
+            padding: 72px 0 80px;
+            border-bottom: 1px solid var(--section-divider);
+        }
+
+        .hero-sobre-inner {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 96px;
+            align-items: center;
+        }
+
+        .hero-sobre-subtitle {
+            font-size: 16.5px;
+            color: var(--text-muted);
+            margin-top: 1.4rem;
+            max-width: 520px;
+            line-height: 1.85;
+        }
+
+        .hero-sobre-photo {
+            width: 100%;
+            aspect-ratio: 4/4.8;
+            object-fit: cover;
+            object-position: center 15%;
+            display: block;
+        }
+
+        .hero-photo-frame {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-photo-frame::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg,
+                    var(--slate-mid) 0%,
+                    var(--peach-mid) 50%,
+                    var(--sage-mid) 100%);
+            z-index: 1;
+        }
+
+        .badge-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 2rem;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 16px;
+            border: 1px solid var(--border-md);
+            font-size: 11.5px;
+            font-weight: 500;
+            color: var(--text-muted);
+            letter-spacing: 0.04em;
+            background: transparent;
+        }
+
+        .badge-accent {
+            background: var(--peach-pale);
+            border-color: var(--peach-mid);
+            color: var(--peach);
+        }
+
+        /* ── TRAJETÓRIA ── */
+        #trajetoria {
+            background: var(--bg-dores);
+            padding: 104px 0;
+            border-top: 1px solid var(--section-divider);
+        }
+
+        .trajetoria-inner {
+            max-width: 760px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .trajetoria-inner .section-label {
+            justify-content: center;
+        }
+
+        .trajetoria-inner .section-label::before {
+            display: none;
+        }
+
+        .trajetoria-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            font-size: clamp(2rem, 3.5vw, 2.6rem);
+            color: var(--bordeaux);
+            line-height: 1.2;
+            margin-bottom: 1.6rem;
+        }
+
+        .trajetoria-title em {
+            font-style: italic;
+            color: var(--peach);
+        }
+
+        .trajetoria-text p {
+            font-size: 15.5px;
+            color: var(--text-body);
+            line-height: 1.9;
+            margin-bottom: 1.4rem;
+        }
+
+        .trajetoria-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ── METODOLOGIA ── */
+        #metodologia {
+            background: var(--bg-para-quem);
+            padding: 104px 0;
+            border-top: 1px solid var(--section-divider);
+        }
+
+        .metodologia-top {
+            text-align: center;
+            max-width: 620px;
+            margin: 0 auto 64px;
+        }
+
+        .metodologia-top .section-title {
+            margin-bottom: 1rem;
+        }
+
+        .metodologia-top p {
+            font-size: 15.5px;
+            color: var(--text-muted);
+            line-height: 1.85;
+        }
+
+        .metodologia-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+        }
+
+        .metodo-card {
+            background: var(--bg-hero);
+            padding: 44px 36px 40px;
+        }
+
+        .metodo-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 300;
+            color: var(--bordeaux-mid);
+            line-height: 1;
+            margin-bottom: 1.2rem;
+            opacity: 0.5;
+        }
+
+        .metodo-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            font-size: 1.55rem;
+            color: var(--bordeaux);
+            margin-bottom: 0.75rem;
+            line-height: 1.2;
+        }
+
+        .metodo-desc {
+            font-size: 14.5px;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        /* ── FORMAÇÃO (CITAÇÃO) ── */
+        #formacao {
+            background: var(--bg-dark);
+            padding: 96px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .formacao-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .formacao-quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+            color: #F0E8DF;
+            line-height: 1.3;
+        }
+
+        .formacao-quote em {
+            font-style: italic;
+            color: var(--peach-mid);
+        }
+
+        .formacao-items {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .formacao-item {
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .formacao-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .formacao-dot {
+            width: 6px;
+            height: 6px;
+            min-width: 6px;
+            border-radius: 50%;
+            background: var(--peach-mid);
+            margin-top: 8px;
+        }
+
+        .formacao-item-text strong {
+            display: block;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--neutral-on-dark);
+            letter-spacing: 0.04em;
+            margin-bottom: 2px;
+        }
+
+        .formacao-item-text span {
+            font-size: 12.5px;
+            color: var(--neutral-on-dark-mid);
+            opacity: 0.7;
+        }
+
+        /* ── DEPOIMENTOS (versão compacta, só botão) ── */
+        #depoimentos-sobre {
+            background: var(--bg-dores);
+            padding: 96px 0;
+            border-top: 1px solid var(--section-divider);
+        }
+
+        .depoimentos-sobre-box {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: 48px;
+            background: rgba(255, 255, 255, 0.55);
+            border: 1px solid var(--border-md);
+            padding: 48px 56px;
+        }
+
+        .depoimentos-sobre-stars {
+            display: flex;
+            gap: 5px;
+            flex-shrink: 0;
+        }
+
+        .depoimentos-sobre-stars svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--peach-mid);
+        }
+
+        .depoimentos-sobre-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: var(--bordeaux);
+            line-height: 1.3;
+            margin-bottom: 8px;
+        }
+
+        .depoimentos-sobre-desc {
+            font-size: 14.5px;
+            color: var(--text-muted);
+            line-height: 1.75;
+            max-width: 460px;
+        }
+
+        .btn-depoimentos-sobre {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 15px 34px;
+            background: var(--bordeaux);
+            color: #FDFCFA;
+            font-size: 12.5px;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: none;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: opacity 0.2s, transform 0.15s;
+            flex-shrink: 0;
+        }
+
+        .btn-depoimentos-sobre:hover {
+            opacity: 0.88;
+            transform: translateY(-1px);
+        }
+
+        .btn-depoimentos-sobre svg {
+            width: 15px;
+            height: 15px;
+        }
+
+        /* ── CTA ── */
+        #cta-sobre {
+            background: var(--bg-entregaveis);
+            padding: 96px 0;
+            text-align: center;
+            border-top: 1px solid var(--section-divider);
+        }
+
+        .cta-sobre-inner {
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        .cta-sobre-inner .section-label {
+            justify-content: center;
+        }
+
+        .cta-sobre-inner .section-label::before {
+            display: none;
+        }
+
+        .cta-subtitle {
+            font-size: 16px;
+            color: var(--text-muted);
+            line-height: 1.85;
+            margin: 1.2rem 0 2.4rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 13px 32px;
+            background: var(--peach);
+            color: #FDFCFA;
+            font-size: 12.5px;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: opacity 0.2s, transform 0.15s;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.88;
+            transform: translateY(-1px);
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 13px 32px;
+            background: transparent;
+            border: 1.5px solid var(--bordeaux);
+            color: var(--bordeaux);
+            font-size: 12.5px;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s, transform 0.15s;
+        }
+
+        .btn-outline:hover {
+            background: var(--bordeaux);
+            color: #FDFCFA;
+            transform: translateY(-1px);
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: #2E1F18;
+            padding: 64px 0 36px;
+        }
+
+        .footer-inner {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.2fr;
+            gap: 48px;
+            padding-bottom: 48px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+            margin-bottom: 28px;
+        }
+
+        .footer-tagline {
+            font-size: 13px;
+            color: var(--neutral-on-dark-mid);
+            opacity: 0.75;
+            line-height: 1.7;
+            max-width: 370px;
+        }
+
+        .footer-heading {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--neutral-on-dark);
+            opacity: 0.5;
+            margin-bottom: 14px;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+        }
+
+        .footer-links a {
+            font-size: 13px;
+            color: var(--neutral-on-dark-mid);
+            opacity: 0.75;
+            text-decoration: none;
+            transition: opacity 0.2s;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .footer-links-chevron a::before {
+            content: '›';
+            display: inline-block;
+            margin-right: 8px;
+            color: var(--peach-mid);
+            font-size: 15px;
+            line-height: 1;
+        }
+
+        .footer-contact-icon {
+            width: 15px;
+            height: 15px;
+            margin-right: 10px;
+            flex-shrink: 0;
+            color: var(--peach-mid);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-bottom span {
+            font-size: 12px;
+            color: var(--neutral-on-dark-mid);
+            opacity: 0.45;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .footer-socials a {
+            color: var(--neutral-on-dark-mid);
+            opacity: 0.5;
+            transition: opacity 0.2s;
+            text-decoration: none;
+        }
+
+        .footer-socials a:hover {
+            opacity: 1;
+        }
+
+        .footer-socials svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* ── MOBILE NAVIGATION ── */
+        @media (max-width: 1024px) {
+            .container,
+            .nav-inner {
+                padding: 0 20px;
+            }
+
+            .nav-inner {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                height: 76px;
+            }
+
+            .nav-logo img {
+                height: 58px;
+            }
+
+            .nav-links {
+                display: flex;
+                flex-direction: column;
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: var(--bg-hero);
+                padding: 88px 30px 40px;
+                gap: 20px;
+                box-shadow: -10px 0 30px rgba(0, 0, 0, 0.05);
+                transition: right 0.3s ease;
+                z-index: 999;
+                align-items: flex-start;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links a {
+                font-size: 14px;
+                width: 100%;
+            }
+
+            .nav-dropdown {
+                width: 100%;
+            }
+
+            .dropdown-menu {
+                position: static;
+                transform: none;
+                box-shadow: none;
+                border: none;
+                background: rgba(0, 0, 0, 0.02);
+                width: 100%;
+                margin-top: 8px;
+                padding-left: 16px;
+            }
+
+            .dropdown-menu a {
+                font-size: 13px;
+                padding: 10px 0;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            }
+
+            .nav-cta {
+                display: none;
+            }
+
+            .nav-toggle {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                width: 24px;
+                height: 16px;
+                background: none;
+                border: none;
+                cursor: pointer;
+                padding: 0;
+                z-index: 1000;
+            }
+
+            .nav-toggle span {
+                display: block;
+                width: 100%;
+                height: 2px;
+                background-color: var(--text-primary);
+                transition: transform 0.3s ease, opacity 0.3s ease;
+                transform-origin: center;
+            }
+
+            .nav-toggle.active span:nth-child(1) {
+                transform: translateY(7px) rotate(45deg);
+            }
+
+            .nav-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .nav-toggle.active span:nth-child(3) {
+                transform: translateY(-7px) rotate(-45deg);
+            }
+
+            /* Footer Alignment */
+            .footer-inner {
+                grid-template-columns: 1fr;
+                gap: 32px;
+                text-align: center;
+            }
+
+            .footer-tagline {
+                margin: 0 auto;
+            }
+
+            .footer-socials {
+                justify-content: center;
+            }
+
+            .footer-links {
+                align-items: center;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+        }
+
+        /* ── MOBILE LAYOUT ── */
+        @media (max-width: 900px) {
+            #hero-sobre,
+            #trajetoria,
+            #metodologia,
+            #formacao,
+            #depoimentos-sobre,
+            #cta-sobre {
+                padding: 64px 0;
+            }
+
+            .hero-sobre-inner {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-sobre-inner .hero-sobre-right {
+                order: -1;
+                max-width: 520px;
+                margin: 0 auto;
+                width: 100%;
+            }
+
+            .metodologia-grid {
+                grid-template-columns: 1fr;
+                gap: 2px;
+            }
+
+            .formacao-inner {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .formacao-item {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 8px;
+                padding-bottom: 20px;
+            }
+
+            .formacao-dot {
+                display: none;
+            }
+
+            .depoimentos-sobre-box {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 22px;
+                padding: 40px 26px;
+            }
+
+            .depoimentos-sobre-stars {
+                justify-content: center;
+            }
+
+            .depoimentos-sobre-desc {
+                max-width: none;
+                margin: 0 auto;
+            }
+
+            .btn-depoimentos-sobre {
+                width: 100%;
+                justify-content: center;
+            }
+
+            /* Content Alignment */
+            .hero-sobre-left,
+            .trajetoria-inner,
+            .formacao-inner {
+                text-align: center;
+            }
+
+            .hero-sobre-subtitle {
+                margin-left: auto;
+                margin-right: auto;
+                text-align: center;
+            }
+
+            .badge-group {
+                justify-content: center;
+            }
+
+            .section-label {
+                justify-content: center;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">
+                <img src="assets/logoteste.png" alt="Juliana Munhoz">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="sobre.html" class="active">Sobre mim</a></li>
+                <li class="nav-dropdown">
+                    <a href="#" aria-haspopup="true" aria-expanded="false">Serviços</a>
+                    <div class="dropdown-menu">
+                        <a href="psicoterapia.html">Psicoterapia</a>
+                        <a href="mentoria.html">Mentoria</a>
+                        <a href="consultoria.html">Consultoria</a>
+                    </div>
+                </li>
+                <li><a href="reembolso.html">Reembolso</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+            <a href="https://wa.me/5511925410867" class="nav-cta">Agendar conversa</a>
+            <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="hero-sobre">
+        <div class="container">
+            <div class="hero-sobre-inner">
+                <div class="hero-sobre-left">
+                    <p class="section-label">Sobre mim</p>
+                    <h1 class="display">
+                        Mais de 25 anos<br>
+                        ouvindo quem <em>lidera</em>
+                    </h1>
+                    <p class="hero-sobre-subtitle">
+                        Conheça a trajetória de mais de duas décadas que conecta o contexto organizacional ao
+                        acolhimento clínico baseado em evidências.
+                    </p>
+                    <div class="badge-group">
+                        <span class="badge">25 anos de experiência corporativa</span>
+                        <span class="badge badge-accent">Psicóloga CRP 06/75056</span>
+                        <span class="badge">TCC &amp; Neuropsicologia</span>
+                    </div>
+                </div>
+                <div class="hero-sobre-right">
+                    <div class="hero-photo-frame">
+                        <img src="assets/juliana-branco.png"
+                            alt="Juliana Munhoz, Psicóloga especialista em TCC e Neuropsicologia"
+                            class="hero-sobre-photo">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRAJETÓRIA -->
+    <section id="trajetoria">
+        <div class="container">
+            <div class="trajetoria-inner">
+                <p class="section-label center">Trajetória</p>
+                <h2 class="trajetoria-title">Uma trajetória entre o universo corporativo e a prática clínica</h2>
+                <div class="trajetoria-text">
+                    <p>
+                        Ao longo de mais de 25 anos, atuei em empresas de diferentes setores, acompanhando processos
+                        de fusão, aquisição, mudanças culturais e desafios emocionais no contexto organizacional.
+                    </p>
+                    <p>
+                        Essa vivência me permitiu compreender profundamente as demandas humanas presentes no
+                        ambiente corporativo e reconhecer a escuta como um dos pilares mais importantes da minha
+                        atuação.
+                    </p>
+                    <p>
+                        Hoje integro essa experiência à prática clínica, ao desenvolvimento profissional e à
+                        consultoria empresarial por meio de uma abordagem autoral baseada em essência, presença e
+                        escolhas práticas.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- METODOLOGIA -->
+    <section id="metodologia">
+        <div class="container">
+            <div class="metodologia-top">
+                <p class="section-label center">Metodologia</p>
+                <h2 class="section-title">Essência, Presença<br>e Escolhas Práticas</h2>
+                <p>
+                    Uma abordagem autoral que integra Psicologia, Neuropsicologia e estratégias de Desenvolvimento
+                    Humano para apoiar processos consistentes de autoconhecimento, fortalecimento emocional e tomada de
+                    decisão.
+                </p>
+            </div>
+            <div class="metodologia-grid">
+                <div class="metodo-card">
+                    <p class="metodo-num">01</p>
+                    <p class="metodo-title">Essência</p>
+                    <p class="metodo-desc">
+                        Mapeamento de forças, valores e competências genuínas. Entender quem
+                        você é de verdade é o ponto de partida para qualquer transformação
+                        sustentável — profissional ou pessoal.
+                    </p>
+                </div>
+                <div class="metodo-card">
+                    <p class="metodo-num">02</p>
+                    <p class="metodo-title">Presença</p>
+                    <p class="metodo-desc">
+                        Desenvolvimento de autoconhecimento, regulação emocional e
+                        comunicação consciente. Presença é a capacidade de aparecer
+                        integralmente em cada relação e decisão.
+                    </p>
+                </div>
+                <div class="metodo-card">
+                    <p class="metodo-num">03</p>
+                    <p class="metodo-title">Escolhas Práticas</p>
+                    <p class="metodo-desc">
+                        Direcionamento estratégico com ferramentas concretas. Clareza sem
+                        ação não transforma — por isso cada processo inclui planos e
+                        exercícios aplicáveis à realidade de cada pessoa.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORMAÇÃO -->
+    <section id="formacao">
+        <div class="container">
+            <div class="formacao-inner">
+                <div>
+                    <p class="section-label" style="color: var(--neutral-on-dark-mid); opacity:0.6;">Formação</p>
+                    <p class="formacao-quote">
+                        Ciência e experiência<br>
+                        a serviço de quem<br>
+                        <em>quer crescer</em>
+                    </p>
+                </div>
+                <div class="formacao-items">
+                    <div class="formacao-item">
+                        <div class="formacao-dot"></div>
+                        <div class="formacao-item-text">
+                            <strong>Psicóloga — CRP 06/75056</strong>
+                            <span>Formação em Psicologia</span>
+                        </div>
+                    </div>
+                    <div class="formacao-item">
+                        <div class="formacao-dot"></div>
+                        <div class="formacao-item-text">
+                            <strong>Especialista em Terapia Cognitivo-Comportamental (TCC)</strong>
+                            <span>Abordagem baseada em evidências para transformação comportamental</span>
+                        </div>
+                    </div>
+                    <div class="formacao-item">
+                        <div class="formacao-dot"></div>
+                        <div class="formacao-item-text">
+                            <strong>Especialista em Neuropsicologia</strong>
+                            <span>Compreensão aprofundada dos processos cognitivos e emocionais</span>
+                        </div>
+                    </div>
+                    <div class="formacao-item">
+                        <div class="formacao-dot"></div>
+                        <div class="formacao-item-text">
+                            <strong>25 anos de experiência corporativa</strong>
+                            <span>Atuação em empresas de múltiplos setores, incluindo setor elétrico</span>
+                        </div>
+                    </div>
+                    <div class="formacao-item">
+                        <div class="formacao-dot"></div>
+                        <div class="formacao-item-text">
+                            <strong>Inteligência Emocional &amp; Desenvolvimento Humano</strong>
+                            <span>Metodologia própria integrando Psicologia e desenvolvimento profissional</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEPOIMENTOS (compacto, apenas botão) -->
+    <section id="depoimentos-sobre">
+        <div class="container">
+            <div class="depoimentos-sobre-box">
+                <div class="depoimentos-sobre-stars" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+                </div>
+                <div class="depoimentos-sobre-text">
+                    <p class="section-label">Depoimentos</p>
+                    <p class="depoimentos-sobre-title">O que dizem sobre o atendimento</p>
+                    <p class="depoimentos-sobre-desc">Confira as avaliações de quem já passou por um processo de
+                        psicoterapia, mentoria ou consultoria comigo no perfil do Google.</p>
+                </div>
+                <a href="https://g.page/r/CQcLPYyFEJbXEBM/review" target="_blank" rel="noopener"
+                    class="btn-depoimentos-sobre">
+                    Ver avaliações no Google
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14M13 6l6 6-6 6" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="cta-sobre">
+        <div class="container">
+            <div class="cta-sobre-inner">
+                <p class="section-label center">Próximo passo</p>
+                <h2 class="section-title" style="text-align:center;">
+                    Vamos dar o<br>próximo <em style="font-style:italic; color:var(--peach);">passo</em>?
+                </h2>
+                <p class="cta-subtitle">
+                    Agende uma conversa inicial e descubra qual caminho —
+                    mentoria, psicoterapia ou consultoria — faz mais sentido
+                    para o seu momento.
+                </p>
+                <div class="cta-buttons">
+                    <a href="https://wa.me/5511925410867" target="_blank" rel="noopener" class="btn-primary">Falar no
+                        WhatsApp →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-inner">
+                <div>
+                    <p class="footer-tagline">Atuação em psicoterapia, mentoria de carreira e consultoria
+                        empresarial. Faturamento por JM Desenvolvimento Humano Ltda. A psicoterapia segue as
+                        diretrizes do CFP; mentoria e consultoria não substituem acompanhamento psicológico ou
+                        psiquiátrico.</p>
+                    <div class="footer-socials">
+                        <a href="https://www.linkedin.com/in/juliana-tonelli-munhoz/" target="_blank" rel="noopener"
+                            aria-label="LinkedIn">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z" />
+                            </svg>
+                        </a>
+                        <a href="https://instagram.com/julianamunhoz_psi" target="_blank" rel="noopener"
+                            aria-label="Instagram">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                <rect x="3" y="3" width="18" height="18" rx="5" />
+                                <circle cx="12" cy="12" r="4" />
+                                <circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <p class="footer-heading">Páginas</p>
+                    <ul class="footer-links footer-links-chevron">
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="sobre.html">Sobre mim</a></li>
+                        <li><a href="reembolso.html">Reembolso</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="footer-heading">Serviços</p>
+                    <ul class="footer-links footer-links-chevron">
+                        <li><a href="psicoterapia.html">Psicoterapia</a></li>
+                        <li><a href="mentoria.html">Mentoria individual feminina</a></li>
+                        <li><a href="consultoria.html">Consultoria empresarial</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="footer-heading">Contatos</p>
+                    <ul class="footer-links footer-links-icon">
+                        <li>
+                            <a href="https://wa.me/5511925410867" target="_blank" rel="noopener">
+                                <svg class="footer-contact-icon" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path
+                                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+                                </svg>
+                                (11) 92541-0867
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:jmdesenvolvimentohumano26@gmail.com">
+                                <svg class="footer-contact-icon" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M4 4h16v16H4z" opacity="0" />
+                                    <path d="M22 6l-10 7L2 6" />
+                                    <rect x="2" y="4" width="20" height="16" rx="2" />
+                                </svg>
+                                jmdesenvolvimentohumano26@gmail.com
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 Juliana Munhoz · Psicóloga CRP 06/75056</span>
+                <span>Desenvolvido por Mauá Júnior</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.nav-dropdown').forEach((dropdown) => {
+            const trigger = dropdown.querySelector('a');
+            const close = () => {
+                dropdown.classList.remove('open');
+                trigger.setAttribute('aria-expanded', 'false');
+            };
+            trigger.addEventListener('click', (e) => {
+                e.preventDefault();
+                const willOpen = !dropdown.classList.contains('open');
+                document.querySelectorAll('.nav-dropdown.open').forEach(d => {
+                    if (d !== dropdown) {
+                        d.classList.remove('open');
+                        d.querySelector('a').setAttribute('aria-expanded', 'false');
+                    }
+                });
+                dropdown.classList.toggle('open', willOpen);
+                trigger.setAttribute('aria-expanded', String(willOpen));
+            });
+            document.addEventListener('click', (e) => { if (!dropdown.contains(e.target)) close(); });
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+        });
+
+        // Hamburger Menu Toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        if (navToggle && navLinks) {
+            navToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+                navToggle.setAttribute('aria-expanded', !expanded);
+                navToggle.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+
+            document.addEventListener('click', (e) => {
+                if (navLinks.classList.contains('active') && !navLinks.contains(e.target) && !navToggle.contains(e.target)) {
+                    navToggle.classList.remove('active');
+                    navLinks.classList.remove('active');
+                    navToggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+                    navToggle.classList.remove('active');
+                    navLinks.classList.remove('active');
+                    navToggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+        }
+    </script>
+
+</body>
+
+</html>

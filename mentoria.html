@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentoria Individual Feminina — Juliana Munhoz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /*
+         * Mesma paleta da página de Psicoterapia, para manter a identidade
+         * consistente entre os serviços do portfólio.
+         */
+        :root {
+            --bg-hero: #F5F0E8;
+            --bg-dores: #F0EBE2;
+            --bg-para-quem: #E8E2D8;
+            --bg-entregaveis: #E4DED4;
+            --bg-dark: #3B2820;
+
+            --bordeaux: #5C2D1E;
+            --bordeaux-pale: #F5E8E2;
+            --bordeaux-mid: #D4A090;
+
+            --peach: #C4745A;
+            --peach-pale: #F5E8E2;
+            --peach-mid: #E8A98C;
+            --peach-light: #FAEAE3;
+
+            --slate: #6B8BA4;
+            --slate-pale: #E8EFF4;
+            --slate-mid: #B8CEDC;
+            --slate-dark: #4A6478;
+
+            --sage: #7A9E84;
+            --sage-pale: #E5EFE7;
+            --sage-mid: #B2CCBA;
+            --sage-dark: #567A60;
+
+            /* — Neutro (marrom claro) — usado nos elementos padrão do site:
+               labels de seção (exceto o eyebrow do hero), números e ícones
+               das seções "Dores" e "Para quem". É um marrom mais claro, da
+               mesma família do bordô dos títulos e do marrom das seções
+               escuras — não é uma das 3 cores da logo. */
+            --neutral: #A89A8C;
+            --neutral-pale: #EFE9E1;
+            --neutral-mid: #D9C9B8;
+            --neutral-dark: #8B7363;
+
+            /* Versão clara do marrom, para uso sobre fundo escuro (ex: "Em 3
+               meses, uma nova trajetória"), no lugar do azul-ardósia. */
+            --neutral-on-dark: #D8C4AE;
+            --neutral-on-dark-mid: #C9B49C;
+
+            --text-primary: #5C2D1E;
+            --text-body: #4A3A30;
+            --text-muted: #A08070;
+
+            --border: rgba(107, 139, 164, 0.12);
+            --border-md: rgba(107, 139, 164, 0.22);
+            --section-divider: rgba(107, 139, 164, 0.10);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-hero);
+            color: var(--text-body);
+            font-size: 16px;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── TIPOGRAFIA ── */
+        .display {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(2.6rem, 6vw, 4.2rem);
+            line-height: 1.1;
+            color: var(--bordeaux);
+            letter-spacing: -0.01em;
+        }
+
+        .display em {
+            font-style: italic;
+            color: var(--peach);
+        }
+
+        .section-label {
+            font-size: 11.5px;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--neutral-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 1.1rem;
+        }
+
+        .section-label::before {
+            content: '';
+            display: block;
+            width: 24px;
+            height: 1px;
+            background: var(--neutral-mid);
+        }
+
+        /* Eyebrow do hero = cor de identidade da página (pêssego, ação/carreira).
+           Os demais section-labels (Dores, Para quem, Entregáveis) permanecem
+           neutros, como padrão estrutural do site. */
+        #hero .section-label {
+            color: var(--peach);
+        }
+
+        #hero .section-label::before {
+            background: var(--peach-mid);
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            font-size: clamp(2rem, 3.8vw, 2.7rem);
+            color: var(--bordeaux);
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        /* ── LAYOUT ── */
+        .container {
+            max-width: 1480px;
+            margin: 0 auto;
+            padding: 0 72px;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--bg-hero);
+            border-bottom: 1px solid var(--section-divider);
+        }
+
+        .nav-inner {
+            max-width: 1480px;
+            margin: 0 auto;
+            padding: 0 72px;
+            height: 104px;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+        }
+
+        .nav-logo {
+            grid-column: 1;
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .nav-logo img {
+            height: 70px;
+            width: auto;
+            display: block;
+        }
+
+        .nav-links {
+            grid-column: 2;
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            display: inline-flex;
+            align-items: center;
+            font-size: 13.5px;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--peach);
+        }
+
+        .nav-links a.active {
+            color: var(--peach);
+        }
+
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .nav-dropdown>a {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .nav-dropdown>a::after {
+            content: '';
+            width: 5px;
+            height: 5px;
+            border-right: 1.5px solid currentColor;
+            border-bottom: 1.5px solid currentColor;
+            transform: rotate(45deg) translateY(-2px);
+            transition: transform 0.2s;
+        }
+
+        .nav-dropdown.open>a::after {
+            transform: rotate(-135deg) translateY(-2px);
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 14px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--bg-hero);
+            border: 1px solid var(--border-md);
+            min-width: 170px;
+            flex-direction: column;
+        }
+
+        .nav-dropdown.open .dropdown-menu {
+            display: flex;
+        }
+
+        .dropdown-menu a {
+            padding: 11px 20px;
+            font-size: 11.5px;
+            font-weight: 500;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            text-decoration: none;
+            border-bottom: 1px solid var(--border);
+            transition: background 0.15s, color 0.15s;
+            white-space: nowrap;
+        }
+
+        .dropdown-menu a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-menu a:hover {
+            background: var(--peach-pale);
+            color: var(--peach);
+        }
+
+        .dropdown-menu a.active {
+            color: var(--peach);
+        }
+
+        .nav-cta {
+            grid-column: 3;
+            justify-self: end;
+            display: inline-flex;
+            align-items: center;
+            padding: 11px 26px;
+            border: 1px solid var(--border-md);
+            font-size: 12.5px;
+            font-weight: 500;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            color: var(--bordeaux);
+            text-decoration: none;
+            transition: background 0.2s, border-color 0.2s;
+        }
+
+        .nav-cta:hover {
+            background: var(--peach-pale);
+            border-color: var(--peach-mid);
+        }
+
+        .nav-toggle {
+            display: none;
+        }
+
+        /* ── HERO ── */
+        #hero {
+            background: var(--bg-hero);
+            padding: 56px 0 64px;
+        }
+
+        .hero-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 88px;
+            align-items: center;
+        }
+
+        .hero-subtitle {
+            font-size: 16.5px;
+            color: var(--text-muted);
+            margin-top: 1.5rem;
+            max-width: 580px;
+            line-height: 1.8;
+        }
+
+        .hero-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 2.2rem;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 16px;
+            border: 1px solid var(--border-md);
+            font-size: 11.5px;
+            font-weight: 500;
+            color: var(--text-muted);
+            letter-spacing: 0.04em;
+            background: transparent;
+        }
+
+        .badge-accent {
+            background: var(--peach-pale);
+            border-color: var(--peach-mid);
+            color: var(--peach);
+        }
+
+        .hero-photo {
+            width: 100%;
+            aspect-ratio: 4/3.9;
+            object-fit: cover;
+            object-position: center 55%;
+            display: block;
+        }
+
+        .hero-photo-frame {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-photo-frame::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg,
+                    var(--slate-mid) 0%,
+                    var(--peach-mid) 50%,
+                    var(--sage-mid) 100%);
+            z-index: 1;
+        }
+
+        /* ── DORES ── */
+        #dores {
+            background: var(--bg-dores);
+            padding: 96px 0;
+            border-top: 1px solid var(--section-divider);
+        }
+
+        .dores-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            margin-top: 3.2rem;
+        }
+
+        .dor-item {
+            background: rgba(255, 255, 255, 0.55);
+            border: 1px solid var(--border);
+            padding: 28px 30px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: border-color 0.2s;
+        }
+
+        .dor-item:hover {
+            border-color: var(--border-md);
+        }
+
+        .dor-icon {
+            width: 42px;
+            height: 42px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--neutral-pale);
+        }
+
+        .dor-icon svg {
+            width: 20px;
+            height: 20px;
+            fill: none;
+            stroke: var(--neutral-dark);
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .dor-text {
+            font-size: 15px;
+            color: var(--text-body);
+            line-height: 1.65;
+        }
+
+        /* ── FRASE ── */
+        #frase {
+            background: var(--bg-dark);
+            padding: 112px 0;
+        }
+
+        .frase-inner {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            gap: 88px;
+            align-items: center;
+        }
+
+        .frase-label {
+            font-size: 11.5px;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--neutral-on-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .frase-label::before {
+            content: '';
+            display: block;
+            width: 24px;
+            height: 1px;
+            background: var(--neutral-on-dark-mid);
+        }
+
+        .frase-quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(2rem, 3.1vw, 2.9rem);
+            color: #F0E8DF;
+            line-height: 1.35;
+            letter-spacing: -0.01em;
+        }
+
+        .frase-quote em {
+            font-style: italic;
+            color: var(--peach-mid);
+        }
+
+        /* ── PARA QUEM ── */
+        #para-quem {
+            background: var(--bg-para-quem);
+            padding: 96px 0;
+            border-top: 1px solid var(--section-divider);
+        }
+
+        .para-quem-top {
+            margin-bottom: 2.8rem;
+        }
+
+        .pq-row-wrap {
+            display: flex;
+            border: 1px solid var(--border-md);
+            border-left: none;
+        }
+
+        .pq-col {
+            flex: 1;
+            border-left: 1px solid var(--border-md);
+            padding: 48px 28px;
+            display: flex;
+            flex-direction: column;
+            background: rgba(255, 255, 255, 0.45);
+            transition: background 0.2s;
+        }
+
+        .pq-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: var(--neutral-mid);
+            display: block;
+            margin-bottom: 24px;
+            line-height: 1;
+        }
+
+        .pq-col-text {
+            font-size: 15.5px;
+            color: var(--text-body);
+            line-height: 1.7;
+        }
+
+        /* ── ENTREGÁVEIS ── */
+        #entregaveis {
+            background: var(--bg-entregaveis);
+            padding: 96px 0;
+            border-top: 1px solid var(--section-divider);
+        }
+
+        .entregaveis-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+            margin-top: 3.2rem;
+        }
+
+        .entregavel-card {
+            background: rgba(255, 255, 255, 0.55);
+            border: 1px solid var(--border);
+            padding: 40px 30px 44px;
+            display: flex;
+            flex-direction: column;
+            transition: border-color 0.2s;
+        }
+
+        .entregavel-card:hover {
+            border-color: var(--border-md);
+        }
+
+        .entregavel-icon {
+            margin-bottom: 26px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .entregavel-icon svg {
+            width: 26px;
+            height: 26px;
+            fill: none;
+            stroke-width: 1.4;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .entregavel-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--bordeaux);
+            margin-bottom: 13px;
+            line-height: 1.3;
+        }
+
+        .entregavel-desc {
+            font-size: 14.5px;
+            color: var(--text-muted);
+            line-height: 1.75;
+        }
+
+        /* ── CTA ── */
+        #cta {
+            background: var(--bg-dark);
+            padding: 108px 0;
+            text-align: center;
+        }
+
+        #cta .display {
+            color: #F0E8DF;
+        }
+
+        #cta .display em {
+            color: var(--peach-mid);
+        }
+
+        .cta-subtitle {
+            font-size: 15.5px;
+            color: rgba(240, 232, 223, 0.55);
+            margin: 1.3rem auto 2.8rem;
+            max-width: 460px;
+            line-height: 1.75;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 13px 32px;
+            background: var(--peach);
+            color: #FDFCFA;
+            font-size: 12.5px;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: opacity 0.2s, transform 0.15s;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.88;
+            transform: translateY(-1px);
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: #2E1F18;
+            padding: 64px 0 36px;
+        }
+
+        .footer-inner {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.2fr;
+            gap: 48px;
+            padding-bottom: 48px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+            margin-bottom: 28px;
+        }
+
+        .footer-tagline {
+            font-size: 13px;
+            color: var(--neutral-on-dark-mid);
+            opacity: 0.75;
+            line-height: 1.7;
+            max-width: 370px;
+        }
+
+        .footer-heading {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--neutral-on-dark);
+            opacity: 0.5;
+            margin-bottom: 14px;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+        }
+
+        .footer-links a {
+            font-size: 13px;
+            color: var(--neutral-on-dark-mid);
+            opacity: 0.75;
+            text-decoration: none;
+            transition: opacity 0.2s;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .footer-links-chevron a::before {
+            content: '›';
+            display: inline-block;
+            margin-right: 8px;
+            color: var(--peach-mid);
+            font-size: 15px;
+            line-height: 1;
+        }
+
+        .footer-contact-icon {
+            width: 15px;
+            height: 15px;
+            margin-right: 10px;
+            flex-shrink: 0;
+            color: var(--peach-mid);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-bottom span {
+            font-size: 12px;
+            color: var(--neutral-on-dark-mid);
+            opacity: 0.45;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .footer-socials a {
+            color: var(--neutral-on-dark-mid);
+            opacity: 0.5;
+            transition: opacity 0.2s;
+            text-decoration: none;
+        }
+
+        .footer-socials a:hover {
+            opacity: 1;
+        }
+
+        .footer-socials svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* ── MOBILE NAV ── */
+        @media (max-width: 1024px) {
+            .container,
+            .nav-inner {
+                padding: 0 20px;
+            }
+
+            .nav-inner {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                height: 76px;
+            }
+
+            .nav-logo img {
+                height: 58px;
+            }
+
+            .nav-links {
+                display: flex;
+                flex-direction: column;
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: var(--bg-hero);
+                padding: 88px 30px 40px;
+                gap: 20px;
+                box-shadow: -10px 0 30px rgba(0, 0, 0, 0.05);
+                transition: right 0.3s ease;
+                z-index: 999;
+                align-items: flex-start;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links a {
+                font-size: 14px;
+                width: 100%;
+            }
+
+            .nav-dropdown {
+                width: 100%;
+            }
+
+            .dropdown-menu {
+                position: static;
+                transform: none;
+                box-shadow: none;
+                border: none;
+                background: rgba(0, 0, 0, 0.02);
+                width: 100%;
+                margin-top: 8px;
+                padding-left: 16px;
+            }
+
+            .dropdown-menu a {
+                font-size: 13px;
+                padding: 10px 0;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            }
+
+            .nav-cta {
+                display: none;
+            }
+
+            .nav-toggle {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                width: 24px;
+                height: 16px;
+                background: none;
+                border: none;
+                cursor: pointer;
+                padding: 0;
+                z-index: 1000;
+            }
+
+            .nav-toggle span {
+                display: block;
+                width: 100%;
+                height: 2px;
+                background-color: var(--text-primary);
+                transition: transform 0.3s ease, opacity 0.3s ease;
+                transform-origin: center;
+            }
+
+            .nav-toggle.active span:nth-child(1) {
+                transform: translateY(7px) rotate(45deg);
+            }
+
+            .nav-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .nav-toggle.active span:nth-child(3) {
+                transform: translateY(-7px) rotate(-45deg);
+            }
+
+            /* Footer Alignment */
+            .footer-inner {
+                grid-template-columns: 1fr;
+                gap: 32px;
+                text-align: center;
+            }
+
+            .footer-tagline {
+                margin: 0 auto;
+            }
+
+            .footer-socials {
+                justify-content: center;
+            }
+
+            .footer-links {
+                align-items: center;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+        }
+
+        /* ── MOBILE LAYOUT ── */
+        @media (max-width: 900px) {
+
+            .container,
+            .nav-inner {
+                padding: 0 20px;
+            }
+
+            #hero,
+            #dores,
+            #para-quem,
+            #entregaveis,
+            #cta,
+            #frase {
+                padding: 64px 0;
+            }
+
+            .hero-inner {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-right {
+                order: -1;
+            }
+
+            .hero-photo {
+                aspect-ratio: 4/4.2;
+                object-position: center 20%;
+                max-width: 520px;
+                margin: 0 auto;
+            }
+
+            .hero-photo-frame {
+                max-width: 520px;
+                margin: 0 auto;
+            }
+
+            .dores-grid,
+            .entregaveis-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .frase-inner {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+
+            .pq-row-wrap {
+                flex-direction: column;
+                border-left: 1px solid var(--border-md);
+                border-top: none;
+            }
+
+            .pq-col {
+                border-left: none;
+                border-top: 1px solid var(--border-md);
+            }
+
+            /* Content Alignment */
+            .hero-left {
+                text-align: center;
+            }
+
+            .hero-subtitle {
+                margin: 1.5rem auto 0;
+                text-align: center;
+            }
+
+            .hero-badges {
+                justify-content: center;
+            }
+
+            .section-label {
+                justify-content: center;
+            }
+
+            .section-title {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">
+                <img src="assets/logoteste.png" alt="Juliana Munhoz">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="sobre.html">Sobre mim</a></li>
+                <li class="nav-dropdown">
+                    <a href="#" aria-haspopup="true" aria-expanded="false">Serviços</a>
+                    <div class="dropdown-menu">
+                        <a href="psicoterapia.html">Psicoterapia</a>
+                        <a href="mentoria.html" class="active">Mentoria</a>
+                        <a href="consultoria.html">Consultoria</a>
+                    </div>
+                </li>
+                <li><a href="reembolso.html">Reembolso</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+            <a href="https://wa.me/5511925410867" class="nav-cta">Agendar conversa</a>
+            <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="hero">
+        <div class="container">
+            <div class="hero-inner">
+                <div class="hero-left">
+                    <p class="section-label">Desenvolvimento profissional com clareza e estratégia</p>
+                    <h1 class="display">
+                        Mentoria de carreira e liderança para mulheres
+                    </h1>
+                    <p class="hero-subtitle">
+                        Uma jornada estruturada para mulheres que desejam fortalecer posicionamento, tomada de decisão,
+                        liderança e crescimento profissional de forma sustentável.
+                    </p>
+                    <div class="hero-badges">
+                        <span class="badge">25 anos de experiência corporativa</span>
+                        <span class="badge badge-accent">Psicologia + Neurociência + Carreira</span>
+                    </div>
+                </div>
+                <div class="hero-right">
+                    <div class="hero-photo-frame">
+                        <img src="assets/juliana-vermelho.png"
+                            alt="Juliana Munhoz, mentora de carreira e liderança feminina" class="hero-photo">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DORES -->
+    <section id="dores">
+        <div class="container">
+            <p class="section-label">Dores que resolve</p>
+            <h2 class="section-title">Quais são as suas demandas?</h2>
+            <div class="dores-grid">
+
+                <div class="dor-item">
+                    <div class="dor-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M16 3l4 4-4 4" />
+                            <path d="M20 7H4" />
+                            <path d="M8 21l-4-4 4-4" />
+                            <path d="M4 17h16" />
+                        </svg>
+                    </div>
+                    <p class="dor-text">Transição de carreira</p>
+                </div>
+
+                <div class="dor-item">
+                    <div class="dor-icon">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="8" />
+                            <path d="M12 8v8M8 12h8" />
+                        </svg>
+                    </div>
+                    <p class="dor-text">Posicionamento profissional</p>
+                </div>
+
+                <div class="dor-item">
+                    <div class="dor-icon">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="4" />
+                            <path
+                                d="M12 3v2M12 19v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M3 12h2M19 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" />
+                        </svg>
+                    </div>
+                    <p class="dor-text">Autoconfiança</p>
+                </div>
+
+                <div class="dor-item">
+                    <div class="dor-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M3 19h18" />
+                            <path d="M4 19l-1-9 5 4 4-7 4 7 5-4-1 9" />
+                        </svg>
+                    </div>
+                    <p class="dor-text">Liderança</p>
+                </div>
+
+                <div class="dor-item">
+                    <div class="dor-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" />
+                            <path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" />
+                            <path d="M7 21h10" />
+                            <path d="M12 3v18" />
+                            <path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2" />
+                        </svg>
+                    </div>
+                    <p class="dor-text">Tomada de decisão</p>
+                </div>
+
+                <div class="dor-item">
+                    <div class="dor-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z" />
+                            <circle cx="12" cy="12" r="3" />
+                        </svg>
+                    </div>
+                    <p class="dor-text">Visibilidade profissional</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FRASE -->
+    <section id="frase">
+        <div class="container">
+            <div class="frase-inner">
+                <span class="frase-label">Em 3 meses, uma nova trajetória</span>
+                <p class="frase-quote">
+                    Carreira e equilíbrio não são escolhas opostas.<br>
+                    Com método e <em>direcionamento estratégico</em>, é<br>
+                    possível trocar insegurança por confiança.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PARA QUEM -->
+    <section id="para-quem">
+        <div class="container">
+            <div class="para-quem-top">
+                <p class="section-label">Para quem é</p>
+                <h2 class="section-title">Essa mentoria é para mulheres que…</h2>
+            </div>
+            <div class="pq-row-wrap">
+                <div class="pq-col">
+                    <span class="pq-number">01</span>
+                    <p class="pq-col-text">Estão em fase de transição profissional</p>
+                </div>
+                <div class="pq-col">
+                    <span class="pq-number">02</span>
+                    <p class="pq-col-text">Desejam fortalecer liderança e presença</p>
+                </div>
+                <div class="pq-col">
+                    <span class="pq-number">03</span>
+                    <p class="pq-col-text">Buscam mais clareza para decisões importantes</p>
+                </div>
+                <div class="pq-col">
+                    <span class="pq-number">04</span>
+                    <p class="pq-col-text">Desejam crescer com mais segurança e estratégia</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ENTREGÁVEIS -->
+    <section id="entregaveis">
+        <div class="container">
+            <p class="section-label">O que está incluso</p>
+            <h2 class="section-title">Entregáveis</h2>
+            <div class="entregaveis-grid">
+
+                <div class="entregavel-card">
+                    <div class="entregavel-icon">
+                        <svg viewBox="0 0 24 24" style="stroke:var(--slate)">
+                            <rect x="3" y="4" width="18" height="18" rx="2" />
+                            <path d="M16 2v4M8 2v4M3 10h18" />
+                        </svg>
+                    </div>
+                    <p class="entregavel-title">5 encontros individuais</p>
+                    <p class="entregavel-desc">Sessões de mentoria ao longo de 3 meses, com foco em resultados práticos
+                        para a sua carreira.</p>
+                </div>
+
+                <div class="entregavel-card">
+                    <div class="entregavel-icon">
+                        <svg viewBox="0 0 24 24" style="stroke:var(--sage)">
+                            <path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+                        </svg>
+                    </div>
+                    <p class="entregavel-title">Plano de carreira personalizado</p>
+                    <p class="entregavel-desc">Direcionamento estratégico construído sob medida para os seus objetivos
+                        profissionais.</p>
+                </div>
+
+                <div class="entregavel-card">
+                    <div class="entregavel-icon">
+                        <svg viewBox="0 0 24 24" style="stroke:var(--peach)">
+                            <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
+                            <polyline points="14 2 14 8 20 8" />
+                            <line x1="9" y1="13" x2="15" y2="13" />
+                            <line x1="9" y1="17" x2="12" y2="17" />
+                        </svg>
+                    </div>
+                    <p class="entregavel-title">Estratégias de posicionamento</p>
+                    <p class="entregavel-desc">Recursos práticos para lidar com ansiedade e insegurança no dia a dia da
+                        carreira.</p>
+                </div>
+
+                <div class="entregavel-card">
+                    <div class="entregavel-icon">
+                        <svg viewBox="0 0 24 24" style="stroke:var(--sage)">
+                            <circle cx="12" cy="12" r="10" />
+                            <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" />
+                        </svg>
+                    </div>
+                    <p class="entregavel-title">Mapeamento de competências</p>
+                    <p class="entregavel-desc">Clareza sobre suas competências, valores e forças para guiar suas
+                        escolhas profissionais.</p>
+                </div>
+
+                <div class="entregavel-card">
+                    <div class="entregavel-icon">
+                        <svg viewBox="0 0 24 24" style="stroke:var(--slate)">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                        </svg>
+                    </div>
+                    <p class="entregavel-title">Acompanhamento assíncrono</p>
+                    <p class="entregavel-desc">Suporte contínuo entre os encontros para tirar dúvidas e manter o
+                        processo em movimento.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="cta">
+        <div class="container">
+            <h2 class="display">Agende uma conversa estratégica</h2>
+            <p class="cta-subtitle">Agende uma conversa inicial e dê o primeiro passo rumo a mais clareza, confiança e
+                equilíbrio na sua trajetória profissional.</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn-primary">Agendar agora →</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-inner">
+                <div>
+                    <p class="footer-tagline">Atuação em psicoterapia, mentoria de carreira e consultoria
+                        empresarial. Faturamento por JM Desenvolvimento Humano Ltda. A psicoterapia segue as
+                        diretrizes do CFP; mentoria e consultoria não substituem acompanhamento psicológico ou
+                        psiquiátrico.</p>
+                    <div class="footer-socials">
+                        <a href="https://www.linkedin.com/in/juliana-tonelli-munhoz/" target="_blank" rel="noopener"
+                            aria-label="LinkedIn">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z" />
+                            </svg>
+                        </a>
+                        <a href="https://instagram.com/julianamunhoz_psi" target="_blank" rel="noopener"
+                            aria-label="Instagram">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                <rect x="3" y="3" width="18" height="18" rx="5" />
+                                <circle cx="12" cy="12" r="4" />
+                                <circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <p class="footer-heading">Páginas</p>
+                    <ul class="footer-links footer-links-chevron">
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="sobre.html">Sobre mim</a></li>
+                        <li><a href="reembolso.html">Reembolso</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="footer-heading">Serviços</p>
+                    <ul class="footer-links footer-links-chevron">
+                        <li><a href="psicoterapia.html">Psicoterapia</a></li>
+                        <li><a href="mentoria.html">Mentoria individual feminina</a></li>
+                        <li><a href="consultoria.html">Consultoria empresarial</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="footer-heading">Contatos</p>
+                    <ul class="footer-links footer-links-icon">
+                        <li>
+                            <a href="https://wa.me/5511925410867" target="_blank" rel="noopener">
+                                <svg class="footer-contact-icon" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path
+                                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+                                </svg>
+                                (11) 92541-0867
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:jmdesenvolvimentohumano26@gmail.com">
+                                <svg class="footer-contact-icon" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M4 4h16v16H4z" opacity="0" />
+                                    <path d="M22 6l-10 7L2 6" />
+                                    <rect x="2" y="4" width="20" height="16" rx="2" />
+                                </svg>
+                                jmdesenvolvimentohumano26@gmail.com
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 Juliana Munhoz · Psicóloga CRP 06/75056</span>
+                <span>Desenvolvido por Mauá Júnior</span>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        document.querySelectorAll('.nav-dropdown').forEach((dropdown) => {
+            const trigger = dropdown.querySelector('a');
+            const close = () => {
+                dropdown.classList.remove('open');
+                trigger.setAttribute('aria-expanded', 'false');
+            };
+            trigger.addEventListener('click', (e) => {
+                e.preventDefault();
+                const willOpen = !dropdown.classList.contains('open');
+                document.querySelectorAll('.nav-dropdown.open').forEach(d => {
+                    if (d !== dropdown) {
+                        d.classList.remove('open');
+                        d.querySelector('a').setAttribute('aria-expanded', 'false');
+                    }
+                });
+                dropdown.classList.toggle('open', willOpen);
+                trigger.setAttribute('aria-expanded', String(willOpen));
+            });
+            document.addEventListener('click', (e) => { if (!dropdown.contains(e.target)) close(); });
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+        });
+
+        // Hamburger Menu Toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        if (navToggle && navLinks) {
+            navToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+                navToggle.setAttribute('aria-expanded', !expanded);
+                navToggle.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+
+            document.addEventListener('click', (e) => {
+                if (navLinks.classList.contains('active') && !navLinks.contains(e.target) && !navToggle.contains(e.target)) {
+                    navToggle.classList.remove('active');
+                    navLinks.classList.remove('active');
+                    navToggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+                    navToggle.classList.remove('active');
+                    navLinks.classList.remove('active');
+                    navToggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+        }
+    </script>
+
+</body>
+
+</html>
